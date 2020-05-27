@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Enviro/src/Testing/LSystem/Linden.h
+iostream
+D:/Enviro/src/Testing/LSystem/iostream
+
+D:/Enviro/src/Testing/LSystem/lsys.cpp
+lsys.h
+D:/Enviro/src/Testing/LSystem/lsys.h
+
+D:/Enviro/src/Testing/LSystem/lsys.h
+iostream
+-
+stdio.h
+-
+Linden.h
+D:/Enviro/src/Testing/LSystem/Linden.h
+
