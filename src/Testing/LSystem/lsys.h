@@ -6,7 +6,8 @@
 #define ENVIRO_LSYS_H
 
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
+
 #include "Linden.h"
 
 #endif //ENVIRO_LSYS_H

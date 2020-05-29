@@ -6,9 +6,27 @@
 
 #IncludeRegexTransform: 
 
+D:/Enviro/src/Testing/LSystem/Linden.cpp
+Linden.h
+D:/Enviro/src/Testing/LSystem/Linden.h
+
 D:/Enviro/src/Testing/LSystem/Linden.h
 iostream
-D:/Enviro/src/Testing/LSystem/iostream
+-
+vector
+-
+cstdlib
+-
+fstream
+-
+cassert
+-
+iterator
+-
+sstream
+-
+algorithm
+-
 
 D:/Enviro/src/Testing/LSystem/lsys.cpp
 lsys.h
@@ -17,7 +35,7 @@ D:/Enviro/src/Testing/LSystem/lsys.h
 D:/Enviro/src/Testing/LSystem/lsys.h
 iostream
 -
-stdio.h
+cstdio
 -
 Linden.h
 D:/Enviro/src/Testing/LSystem/Linden.h

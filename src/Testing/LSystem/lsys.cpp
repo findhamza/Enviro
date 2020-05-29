@@ -4,14 +4,10 @@
 
 #include "lsys.h"
 
-int main()
-{
-    cout << "Hello lsys" << endl;
-    cout << "Iteration Count:  ";
-    printf("Hello World");
-    int iteration;
-    cin >> iteration;
+int main() {
 
-    Linden treeA(iteration);
-    cout << treeA.getIterations() << endl;
+    std::cout << "Hello lsys" << std::endl;
+
+    std::string treeFile = "../DATA/TREE/TreeA.dat";
+    Linden A(treeFile);
 }

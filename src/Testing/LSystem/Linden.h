@@ -7,20 +7,33 @@
 
 #include <iostream>
 #include <vector>
-#include <wsman.h>
 #include <cstdlib>
+#include <fstream>
+#include <cassert>
+#include <iterator>
+#include <sstream>
+#include <algorithm>
+
+#define T_LEFT +
+#define T_RIGHT -
+#define T_AROUND |
+#define DOWN &
+#define UP ^
+#define R_LEFT \
+#define R_RIGHT /
 
 class Linden {
-    private:
-        int iterations;
-        std::vector<char> variables;
 
-        char itol(int n);
+    int iterations;
+    int angle;
+    std::string tree;
+    std::vector<std::string> rules;
+
+    char itol(int n);
 
     public:
         Linden();
-        Linden(int iterate);
-        Linden(int iterate, int varCount);
+        Linden(std::string);
 
         int getIterations();
 
