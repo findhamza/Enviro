@@ -27,16 +27,10 @@ sstream
 -
 algorithm
 -
-
-D:/Enviro/src/Testing/LSystem/lsys.cpp
-lsys.h
-D:/Enviro/src/Testing/LSystem/lsys.h
-
-D:/Enviro/src/Testing/LSystem/lsys.h
-iostream
+regex
 -
-cstdio
+time.h
 -
-Linden.h
-D:/Enviro/src/Testing/LSystem/Linden.h
+random
+-
 
