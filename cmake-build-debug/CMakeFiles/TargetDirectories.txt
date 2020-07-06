@@ -1,4 +1,0 @@
-D:/Enviro/cmake-build-debug/CMakeFiles/LSystem.dir
-D:/Enviro/cmake-build-debug/CMakeFiles/FSM.dir
-D:/Enviro/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Enviro/cmake-build-debug/CMakeFiles/rebuild_cache.dir
