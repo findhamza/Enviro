@@ -1,3 +1,2 @@
-﻿  learners.cpp
-  LINK : C:\Users\Hamza\Desktop\GitHub\Enviro\Learners\x64\Debug\Learners.exe not found or not built by the last incremental link; performing full link
-  Learners.vcxproj -> C:\Users\Hamza\Desktop\GitHub\Enviro\Learners\x64\Debug\Learners.exe
+﻿  tutorial2.cpp
+D:\Enviro\Learners\freeglut\include\GL\freeglut_std.h(68,1): fatal error C1189: #error:  Static linking is not supported with this build. Please remove the FREEGLUT_STATIC preprocessor directive, or download the source code from http://freeglut.sf.net/ and build against that.
