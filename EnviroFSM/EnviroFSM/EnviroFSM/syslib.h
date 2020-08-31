@@ -6,6 +6,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <string>
 #include <ctype.h>
+#include <ctime>
+#include <Windows.h>
 
 #endif

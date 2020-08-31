@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plant.cpp" />
+    <ClCompile Include="PlantObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Plant.h" />
+    <ClInclude Include="PlantObject.h" />
     <ClInclude Include="syslib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
