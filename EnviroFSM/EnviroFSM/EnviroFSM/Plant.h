@@ -5,57 +5,69 @@
 #include "syslib.h"
 #pragma warning(disable : 26812)
 
-int plantSeed_state(char*);
-int plantGrow_state(char*);
-int plantSustain_state(char*);
-int plantWilt_state(char*);
-int plantDie_state(char*);
+struct plantInputParam plantSeed_state(bool, bool);
+struct plantInputParam plantGrow_state(bool, bool);
+struct plantInputParam plantSustain_state(bool, bool);
+struct plantInputParam plantWilt_state(bool, bool);
+struct plantInputParam plantDie_state(bool, bool);
 
-static int (*plantState[])(char*) = { plantSeed_state, plantGrow_state, plantSustain_state, plantWilt_state, plantDie_state };
+static struct plantInputParam (*plantState[])(bool, bool) = { plantSeed_state, plantGrow_state, plantSustain_state, plantWilt_state, plantDie_state };
 enum plantState_codes { seed, grow, sustain, wilt, die };
 static const char* plantGet_State[] = { "seed", "grow", "sustain", "wilt", "die" };
 
-enum plantRet_codes {water, sun, noWater, noSun};
-static const char* plantGet_ret[] = { "water", "sun", "noWater", "noSun" };
+enum plantWater_codes {water, noWater};
+static const char* plantWater_ret[] = { "water", "noWater" };
+enum plantSun_codes {sun, noSun};
+static const char* plantSun_ret[] = { "sun", "noSun" };
 struct plantTransition {
 	enum plantState_codes plantSrc_state;
-	enum plantRet_codes plantRet_codes;
+	enum plantWater_codes plantWater_codes;
+	enum plantSun_codes plantSun_codes;
 	enum plantState_codes plantDst_state;
 };
 
 static struct plantTransition plantState_transition[] = {
 
 	//seeded state transitions
-	{seed,			water,			grow},
-	{seed,			sun,			seed},
-	{seed,			noWater,		seed},
-	{seed,			noSun,			seed},
+	{seed,			water,		sun,			grow},
+	{seed,			water,		noSun,			grow},
+	{seed,			noWater,	sun,			seed},
+	{seed,			noWater,	noSun,			seed},
 
 	//growth state transitions
-	{grow,			water,			grow},
-	{grow,			sun,			grow},
-	{grow,			noWater,		sustain},
-	{grow,			noSun,			sustain},
+	{grow,			water,		sun,			grow},
+	{grow,			water,		noSun,			sustain},
+	{grow,			noWater,	sun,			sustain},
+	{grow,			noWater,	noSun,			sustain},
 
 	//sustain state transitions
-	{sustain,		water,			grow},
-	{sustain,		sun,			grow},
-	{sustain,		noWater,		wilt},
-	{sustain,		noSun,			wilt},
+	{sustain,		water,		sun,			grow},
+	{sustain,		water,		noSun,			sustain},
+	{sustain,		noWater,	sun,			wilt},
+	{sustain,		noWater,	noSun,			wilt},
 
 	//wilt state transitions
-	{wilt,		water,		sustain},
-	{wilt,		sun,		sustain},
-	{wilt,		noWater,	die},
-	{wilt,		noSun,		die},
+	{wilt,			water,		sun,			sustain},
+	{wilt,			water,		noSun,			sustain},
+	{wilt,			noWater,	sun,			wilt},
+	{wilt,			noWater,	noSun,			die},
 
+	//die state transitions
+	{die,			water,		sun,			die},
+	{die,			water,		noSun,			die},
+	{die,			noWater,	sun,			die},
+	{die,			noWater,	noSun,			die},
+};
+
+struct plantInputParam {
+	enum plantWater_codes getWater;
+	enum plantSun_codes getSun;
 };
 
 #define PLANT_EXIT die
 #define PLANT_ENTRY seed
 
-void plantManager(char*);
-enum plantState_codes plantLookupTransition(plantState_codes, plantRet_codes);
-enum plantRet_codes plantAssort(char*);
+enum plantState_codes plantLookupTransition(plantState_codes, plantInputParam);
+struct plantInputParam pGenerateInput(bool, bool);
 
 #endif

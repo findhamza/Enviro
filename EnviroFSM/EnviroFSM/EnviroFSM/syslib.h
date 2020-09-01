@@ -10,5 +10,10 @@
 #include <ctype.h>
 #include <ctime>
 #include <Windows.h>
+#include <functional>
+#include <random>
+#include <chrono>
+#include <iostream>
+#include <fstream>
 
 #endif
