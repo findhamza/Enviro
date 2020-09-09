@@ -78,6 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\Libraries\GLFW\include\GLFW;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Libraries\GLFW\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -116,10 +118,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\EnviroFSM\Libraries\GLFW\include;..\EnviroFSM\Libraries\GLAD\include\KHR;..\EnviroFSM\Libraries\GLAD\include\glad;..\Libraries\GLAD\include\KHR;..\Libraries\GLAD\include\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,17 +143,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Libraries\GLAD\src\glad.c" />
+    <ClCompile Include="EnviroEngine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="PlantObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EnviroEngine.h" />
+    <ClInclude Include="graphics.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="PlantObject.h" />
     <ClInclude Include="syslib.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="plantA.DAT" />
+    <None Include="shader.frag" />
+    <None Include="shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

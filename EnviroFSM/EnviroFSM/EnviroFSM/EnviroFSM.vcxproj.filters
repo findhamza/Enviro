@@ -24,6 +24,12 @@
     <ClCompile Include="PlantObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EnviroEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\GLAD\src\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="syslib.h">
@@ -35,9 +41,21 @@
     <ClInclude Include="PlantObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EnviroEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="plantA.DAT">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="shader.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="shader.vert">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

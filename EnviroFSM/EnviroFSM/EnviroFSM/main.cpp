@@ -2,6 +2,7 @@
 /* COSC4050:	Indepenent Study	*/
 
 #include "syslib.h"
+#include "EnviroEngine.h"
 #include "PlantObject.h"
 
 bool randomBool() {
@@ -13,6 +14,18 @@ bool randomBool() {
 
 int main(int argc, const char* argv[]) {
 	printf("HELLO WORLD");
+
+	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 640, 480, false))
+	{
+		while (EnviroEngine::getInstance()->running())
+		{
+			EnviroEngine::getInstance()->handleEvents();
+			EnviroEngine::getInstance()->update();
+			EnviroEngine::getInstance()->render();
+		}
+	}
+
+	EnviroEngine::getInstance()->clean();
 
 	PlantObject plantA;
 

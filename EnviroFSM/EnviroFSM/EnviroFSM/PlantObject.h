@@ -13,19 +13,33 @@ class PlantObject
 
 	struct rulePairs {
 		std::string node;
+		double chance;
 		std::string nodePair;
+
+		bool operator<(const rulePairs& a) const {
+			return node < a.node;
+		}
+		bool operator==(const rulePairs& a) const {
+			return node == a.node;
+		}
 	};
 
 	struct plantRules {
 		int n;
-		int angle;
+		double angle;
+		std::string seed;
 		std::vector<rulePairs> rules;
+		std::string structure;
+		int growthPoint;
 	};
 
 	plantRules plant;
 
 	void generatePlant();
 	void getPlant(std::string);
+	void iterate();
+	std::string findRule(char);
+	std::string getTree();
 
 	public:
 		PlantObject();
