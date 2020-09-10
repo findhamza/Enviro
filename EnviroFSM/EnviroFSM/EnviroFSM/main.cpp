@@ -5,6 +5,9 @@
 #include "EnviroEngine.h"
 #include "PlantObject.h"
 
+const int FPS = 60;
+const int DELAY_TIME = 1000 / FPS; //originally it was 1000.0f
+
 bool randomBool() {
 	std::default_random_engine rndEngine;
 	rndEngine.seed(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
@@ -15,13 +18,23 @@ bool randomBool() {
 int main(int argc, const char* argv[]) {
 	printf("HELLO WORLD");
 
-	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 640, 480, false))
+	int frameStart, frameTime;
+
+	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 480, 640, false))
 	{
 		while (EnviroEngine::getInstance()->running())
 		{
+			frameStart = glfwGetTime();
+
 			EnviroEngine::getInstance()->handleEvents();
 			EnviroEngine::getInstance()->update();
 			EnviroEngine::getInstance()->render();
+
+			frameTime = glfwGetTime() - frameStart;
+			if (frameTime < DELAY_TIME)
+			{
+				Sleep((int)(DELAY_TIME - frameTime));
+			}
 		}
 	}
 

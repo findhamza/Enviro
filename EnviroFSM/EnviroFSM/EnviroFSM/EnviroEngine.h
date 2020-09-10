@@ -8,6 +8,7 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 std::string getShader(std::string);
+float randomFloat();
 
 class EnviroEngine
 {
@@ -41,7 +42,8 @@ class EnviroEngine
 	char infoLog[512];
 	int fragmentShader;
 	int shaderProgram;
-	unsigned int VBO, VAO;
+	unsigned int VBO, VAO, EBO;
+	float xFloat = 0, yFloat = 0, rFloat = 0.5, thetaFloat = 0;
 
 
 public:
