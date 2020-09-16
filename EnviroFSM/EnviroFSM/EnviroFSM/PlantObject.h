@@ -40,6 +40,7 @@ class PlantObject
 	void iterate();
 	std::string findRule(char);
 	std::string getTree();
+	std::vector<float> drawTree();
 
 	public:
 		PlantObject();

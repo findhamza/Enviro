@@ -42,7 +42,7 @@ void PlantObject::generatePlant()
 		//printf("\n");
 		//std::cout << getTree() << std::endl;
 		iterate();
-		//std::cout << getTree() << std::endl;
+		std::cout << getTree() << std::endl;
 	}
 }
 
@@ -133,4 +133,18 @@ std::string PlantObject::findRule(char piece)
 std::string PlantObject::getTree() 
 {
 	return plant.structure;
+}
+
+std::vector<float> PlantObject::drawTree()
+{
+	std::vector<float> plantMatrix;
+	plantMatrix.push_back(0);
+	plantMatrix.push_back(0);
+		/*
+			std::string str = plant.structure;
+			for (char& c : str) {
+				if(c == 'F')
+
+			}*/
+		return plantMatrix;
 }

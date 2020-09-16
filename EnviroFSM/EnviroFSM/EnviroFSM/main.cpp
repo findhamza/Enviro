@@ -5,7 +5,7 @@
 #include "EnviroEngine.h"
 #include "PlantObject.h"
 
-const int FPS = 1444;
+const int FPS = 60;
 const int DELAY_TIME = 1000 / FPS; //originally it was 1000.0f
 
 bool randomBool() {
