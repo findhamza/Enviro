@@ -135,16 +135,109 @@ std::string PlantObject::getTree()
 	return plant.structure;
 }
 
-std::vector<float> PlantObject::drawTree()
+std::pair<std::vector<float>, std::vector<int>> PlantObject::drawTree()
 {
-	std::vector<float> plantMatrix;
-	plantMatrix.push_back(0);
-	plantMatrix.push_back(0);
-		/*
-			std::string str = plant.structure;
-			for (char& c : str) {
-				if(c == 'F')
+	std::vector<coordPair> plantCoord;
+	std::stack<coordPair> coordStack;
+	coordPair coord = { 0.0,-1 };
+	plantCoord.push_back(coord);
+	coordStack.push(coord);
 
-			}*/
-		return plantMatrix;
+	std::stack<double> plantAngle;
+	plantAngle.push(90);
+	double curAngle = plantAngle.top();
+
+	float step = .19;
+
+	std::string str = plant.structure;
+	for (char& c : str) {
+		if (c == '[') {
+			coordStack.push(coord);
+			plantAngle.push(curAngle);
+		}
+		else if (c == ']') {
+			coordStack.pop();
+			plantAngle.pop();
+		}
+		else if (c == '+') {
+			//curAngle = std::fmod((plantAngle.top() + plant.angle), 180);
+			curAngle = plantAngle.top() + plant.angle;
+			//plantAngle.push(curAngle);
+		}
+		else if (c == '-') {
+			//curAngle = std::fmod((plantAngle.top() - plant.angle), 180);
+			curAngle = plantAngle.top() - plant.angle;
+			if (curAngle < 0)
+				curAngle *= -1;
+			//plantAngle.push(curAngle);
+		}
+		else if (c == 'F') {
+			coord = { (float)(cos(plantAngle.top() * (std::_Pi/180)) * step) + coordStack.top().x
+					, (float)(sin(plantAngle.top() * (std::_Pi / 180)) * step) + coordStack.top().y };
+			plantCoord.push_back(coord);
+			//coordStack.push(coord);
+			std::cout << "x = " << plantCoord.back().x <<
+				", y = " << plantCoord.back().y <<
+				", angle = " << plantAngle.top() << std::endl;
+		}
+		else if (c == 'X') {
+			coord = { (float)(cos(plantAngle.top() * (std::_Pi / 180)) * step) + coordStack.top().x
+					, (float)(sin(plantAngle.top() * (std::_Pi / 180)) * step) + coordStack.top().y };
+			plantCoord.push_back(coord);
+			//coordStack.push(coord);
+			std::cout << "x = " << plantCoord.back().x <<
+				", y = " << plantCoord.back().y <<
+				", angle = " << plantAngle.top() << std::endl;
+		}
+	}
+
+	std::vector<float> plantVerts = plantVert(plantCoord);
+	std::vector<int> plantIndices = plantInd(plantVerts.size()/6);
+	std::pair<std::vector<float>, std::vector<int>> drawDetails;
+	drawDetails.first = plantVerts;
+	drawDetails.second = plantIndices;
+
+	return drawDetails;
+}
+
+std::vector<float> PlantObject::plantVert(std::vector<coordPair> plantCoord)
+{
+	std::vector<float> vert;
+	float size = .007;
+
+	for (auto& point : plantCoord) {
+		vert.push_back(point.x + size);
+		vert.push_back(point.y - size);
+		vert.push_back(0);
+		vert.push_back(0);
+		vert.push_back(0);
+		vert.push_back(0);
+		vert.push_back(point.x - size);
+		vert.push_back(point.y - size);
+		vert.push_back(0);
+		vert.push_back(0);
+		vert.push_back(0);
+		vert.push_back(0);
+	}
+
+	return vert;
+}
+
+std::vector<int> PlantObject::plantInd(int count)
+{
+	std::vector<int> indicies;
+
+	for (int i = 1; i <= count; i++) {
+		if (i % 2 != 0) {
+			indicies.push_back(i);
+			indicies.push_back(i+1);
+			indicies.push_back(i+3);
+		}
+		else {
+			indicies.push_back(i-1);
+			indicies.push_back(i+1);
+			indicies.push_back(i+2);
+		}
+	}
+	return indicies;
 }

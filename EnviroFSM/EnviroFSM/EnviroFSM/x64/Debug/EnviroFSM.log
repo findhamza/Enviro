@@ -1,16 +1,10 @@
-﻿  main.cpp
-D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\main.cpp(13,129): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+﻿  PlantObject.cpp
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(110,129): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
           with
           [
               _Rep=__int64
           ]
-D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\main.cpp(27,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\main.cpp(33,30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  PlantObject.cpp
-D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(110,129): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
-          with
-          [
-              _Rep=__int64
-          ]
-  Generating Code...
-  EnviroFSM.vcxproj -> D:\Enviro\EnviroFSM\EnviroFSM\x64\Debug\EnviroFSM.exe
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(150,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(195,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(206,19): warning C4305: 'initializing': truncation from 'double' to 'float'
+  EnviroFSM.vcxproj -> C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\x64\Debug\EnviroFSM.exe

@@ -4,11 +4,13 @@
 
 #include "syslib.h"
 #include "graphics.h"
+#include "PlantObject.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 std::string getShader(std::string);
 float randomFloat();
+bool randomBool();
 
 class EnviroEngine
 {
@@ -24,6 +26,7 @@ class EnviroEngine
 	const char* vShader = vertShader.c_str();
 	const char* fShader = fragShader.c_str();
 
+	PlantObject plantA; int jee = 0;
 
 	int vertexShader;
 	int success;

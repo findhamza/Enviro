@@ -7,14 +7,14 @@
 
 const int FPS = 60;
 const int DELAY_TIME = 1000 / FPS; //originally it was 1000.0f
-
+/*
 bool randomBool() {
 	std::default_random_engine rndEngine;
 	rndEngine.seed(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
 	static auto gen = std::bind(std::uniform_int_distribution<>(0, 1), rndEngine);
 	return gen();
 }
-
+*/
 int main(int argc, const char* argv[]) {
 	printf("HELLO WORLD");
 
@@ -37,7 +37,7 @@ int main(int argc, const char* argv[]) {
 			}
 		}
 	}
-
+	/*
 	EnviroEngine::getInstance()->clean();
 
 	PlantObject plantA;
@@ -46,4 +46,5 @@ int main(int argc, const char* argv[]) {
 		plantA.plantInput(randomBool(), randomBool(), 5);
 		Sleep(100);
 	} while (plantA.getTestState());
+	*/
 }

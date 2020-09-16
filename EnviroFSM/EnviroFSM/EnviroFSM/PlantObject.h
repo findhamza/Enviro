@@ -1,4 +1,7 @@
 #pragma once
+#ifndef PLANTOBJECT_H
+#define PLANTOBJECT_H
+
 
 #include "syslib.h"
 #include "Plant.h"
@@ -33,6 +36,10 @@ class PlantObject
 		int growthPoint;
 	};
 
+	struct coordPair {
+		float x, y;
+	};
+
 	plantRules plant;
 
 	void generatePlant();
@@ -40,11 +47,15 @@ class PlantObject
 	void iterate();
 	std::string findRule(char);
 	std::string getTree();
-	std::vector<float> drawTree();
+	std::vector<float> plantVert(std::vector<coordPair>);
+	std::vector<int> plantInd(int);
 
 	public:
 		PlantObject();
 		void plantInput(bool wInput, bool sInput, int potency);
 		bool getTestState();
+		std::pair<std::vector<float>,std::vector<int>> drawTree();
 };
 
+
+#endif // !PLANTOBJECT_H

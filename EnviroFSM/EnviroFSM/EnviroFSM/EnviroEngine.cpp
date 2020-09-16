@@ -72,6 +72,10 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
+    do {
+        plantA.plantInput(randomBool(), randomBool(), 5);
+        Sleep(100);
+    } while (plantA.getTestState());
 
     return true;
 }
@@ -91,6 +95,10 @@ void EnviroEngine::update()
     // set up vertex data (and buffer(s)) and configure vertex attributes
 // ------------------------------------------------------------------
 
+    //plantA.plantInput(randomBool(), randomBool(), 5);
+    std::pair<std::vector<float>, std::vector<int>> drawPlant = plantA.drawTree();
+    std::vector<float> plantVerts = drawPlant.first;
+    std::vector<int> plantInds = drawPlant.second;
 
     xFloat = rFloat * cos(thetaFloat);
     yFloat = rFloat * sin(thetaFloat);
@@ -103,7 +111,7 @@ void EnviroEngine::update()
     //xFloat = fmod(xFloat, 1);
     //yFloat += .01;
     //yFloat = fmod(yFloat, 1);
-
+    /*
     float vertices[] = {
         xFloat,  -yFloat, 0.0f,     xFloat,  -yFloat, -xFloat,//0.0f,  // top right       0
         xoFloat, -yoFloat, 0.0f,    xoFloat, -yoFloat, -xFloat,//0.0f,  // bottom right  1
@@ -115,8 +123,12 @@ void EnviroEngine::update()
         0, 1, 3,   // first triangle
         1, 2, 3,    // second triangle
         4, 0, 2
-    };
-    indicesCount = sizeof(indices);
+    };*/
+    float *vertices = plantVerts.data(); //std::copy(plantVerts.begin(), plantVerts.end(), vertices);
+    int *indices = plantInds.data(); //std::copy(plantVerts.begin(), plantVerts.end(), indices);
+
+    indicesCount = plantInds.size();
+    //jee += 6000;
 
     glGenBuffers(1, &EBO);
 
@@ -126,9 +138,11 @@ void EnviroEngine::update()
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    //glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, plantVerts.size() , plantVerts.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, plantInds.size(), plantInds.data(), GL_STATIC_DRAW);
 
     // position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -202,5 +216,12 @@ float randomFloat() {
     std::default_random_engine rndEngine;
     rndEngine.seed(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
     static auto gen = std::bind(std::uniform_real_distribution<>(0, 1), rndEngine);
+    return gen();
+}
+
+bool randomBool() {
+    std::default_random_engine rndEngine;
+    rndEngine.seed(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
+    static auto gen = std::bind(std::uniform_int_distribution<>(0, 1), rndEngine);
     return gen();
 }

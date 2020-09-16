@@ -17,5 +17,6 @@
 #include <fstream>
 #include <vector>
 #include <cmath>
+#include <stack>
 
 #endif
