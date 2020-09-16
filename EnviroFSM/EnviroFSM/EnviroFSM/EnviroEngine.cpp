@@ -6,6 +6,7 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
 {
     // glfw: initialize and configure
     // ------------------------------
+    //Icons made by Freepik from www.flaticon.com
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -31,7 +32,6 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
         std::cout << "Failed to initialize GLAD" << std::endl;
         return false;
     }
-
 
     std::cout << glGetString(GL_VERSION) << std::endl;
     // build and compile our shader program
@@ -73,8 +73,6 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
     glDeleteShader(fragmentShader);
 
 
-
-
     return true;
 }
 
@@ -107,10 +105,10 @@ void EnviroEngine::update()
     //yFloat = fmod(yFloat, 1);
 
     float vertices[] = {
-        xFloat,  -yFloat, 0.0f,     xFloat,  -yFloat, 0.0f,  // top right       0
-        xoFloat, -yoFloat, 0.0f,    xoFloat, -yoFloat, 0.0f,  // bottom right  1
-        -xoFloat, yoFloat, 0.0f,    -xoFloat, yoFloat, 0.0f,  // bottom left   2
-        -xFloat,  yFloat, 0.0f,     -xFloat,  yFloat, 0.0f,  // top left        3
+        xFloat,  -yFloat, 0.0f,     xFloat,  -yFloat, -xFloat,//0.0f,  // top right       0
+        xoFloat, -yoFloat, 0.0f,    xoFloat, -yoFloat, -xFloat,//0.0f,  // bottom right  1
+        -xoFloat, yoFloat, 0.0f,    -xoFloat, yoFloat, xFloat,//0.0f,  // bottom left   2
+        -xFloat,  yFloat, 0.0f,     -xFloat,  yFloat, xFloat,//0.0f,  // top left        3
         0.0f, 0.0f, 0.0f,           0.0f, 0.0f, 0.0f 
     };
     unsigned int indices[] = {  // note that we start from 0!

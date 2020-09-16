@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\EnviroFSM\Libraries\GLFW\include;..\EnviroFSM\Libraries\GLAD\include\KHR;..\EnviroFSM\Libraries\GLAD\include\glad;..\Libraries\GLAD\include\KHR;..\Libraries\GLAD\include\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Libraries\glm;..\EnviroFSM\Libraries\GLFW\include;..\EnviroFSM\Libraries\GLAD\include\KHR;..\EnviroFSM\Libraries\GLAD\include\glad;..\Libraries\GLAD\include\KHR;..\Libraries\GLAD\include\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
