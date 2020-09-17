@@ -205,19 +205,22 @@ std::vector<float> PlantObject::plantVert(std::vector<coordPair> plantCoord)
 	std::vector<float> vert;
 	float size = .007;
 
+	srand(time(NULL));
+	float rnd = 1.0 * rand() / (RAND_MAX / 2) - 1;
+
 	for (auto& point : plantCoord) {
 		vert.push_back(point.x + size);
 		vert.push_back(point.y - size);
 		vert.push_back(0);
-		vert.push_back(0);
-		vert.push_back(0);
-		vert.push_back(0);
+		vert.push_back(0.486);
+		vert.push_back(0.298);
+		vert.push_back(0.211);
 		vert.push_back(point.x - size);
 		vert.push_back(point.y - size);
 		vert.push_back(0);
-		vert.push_back(0);
-		vert.push_back(0);
-		vert.push_back(0);
+		vert.push_back(0.486);
+		vert.push_back(0.298);
+		vert.push_back(0.211);
 	}
 
 	return vert;

@@ -1,18 +1,18 @@
 ﻿  EnviroEngine.cpp
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(105,19): warning C4244: 'initializing': conversion from 'long double' to 'float', possible loss of data
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(106,19): warning C4244: 'initializing': conversion from 'long double' to 'float', possible loss of data
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(107,22): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(108,22): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(130,36): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(217,132): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(104,19): warning C4244: 'initializing': conversion from 'long double' to 'float', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(105,19): warning C4244: 'initializing': conversion from 'long double' to 'float', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(106,22): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(107,22): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(129,36): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(217,132): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
           with
           [
               _Rep=__int64
           ]
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(219,15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(224,132): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(219,15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(224,132): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
           with
           [
               _Rep=__int64
           ]
-  EnviroFSM.vcxproj -> C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\x64\Debug\EnviroFSM.exe
+  EnviroFSM.vcxproj -> D:\Enviro\EnviroFSM\EnviroFSM\x64\Debug\EnviroFSM.exe

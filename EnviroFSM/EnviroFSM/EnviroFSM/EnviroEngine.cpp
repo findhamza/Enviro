@@ -74,7 +74,6 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
 
     do {
         plantA.plantInput(randomBool(), randomBool(), 5);
-        Sleep(100);
     } while (plantA.getTestState());
 
     return true;
@@ -128,7 +127,7 @@ void EnviroEngine::update()
     int *indices = plantInds.data(); //std::copy(plantVerts.begin(), plantVerts.end(), indices);
 
     indicesCount = plantInds.size();
-    jee += 6000;
+    jee += 600;
 
     glGenBuffers(1, &EBO);
 
@@ -139,10 +138,10 @@ void EnviroEngine::update()
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     //glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glBufferData(GL_ARRAY_BUFFER, /*plantVerts.size()*/jee , plantVerts.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, plantVerts.size() /*jee*/ , plantVerts.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, /*plantInds.size()*/ jee/6, plantInds.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, plantInds.size() /*jee/6*/, plantInds.data(), GL_STATIC_DRAW);
 
     // position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -164,7 +163,8 @@ void EnviroEngine::update()
 
 void EnviroEngine::render()
 {
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    //glClearColor(0.2f, 0.3f, 0.3f, 1.0f); //werid teal color
+    glClearColor(0.490f, 0.752f, 0.968f, 1.0f); //malibu blue
     glClear(GL_COLOR_BUFFER_BIT);
     // draw our first triangle
     glUseProgram(shaderProgram);
