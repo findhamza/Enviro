@@ -32,7 +32,7 @@ bool PlantObject::getTestState()
 
 void PlantObject::generatePlant()
 {
-	getPlant("plantA.DAT");
+	getPlant("plantF.DAT");
 
 	plant.structure = plant.seed;
 	std::string newStructure;
@@ -147,17 +147,20 @@ std::pair<std::vector<float>, std::vector<int>> PlantObject::drawTree()
 	plantAngle.push(90);
 	double curAngle = plantAngle.top();
 
-	float step = .19;
+	float step = .5;
+	float stepDown = .8;
 
 	std::string str = plant.structure;
 	for (char& c : str) {
 		if (c == '[') {
 			coordStack.push(coord);
 			plantAngle.push(curAngle);
+			step *= stepDown;
 		}
 		else if (c == ']') {
 			coordStack.pop();
 			plantAngle.pop();
+			step /= stepDown;
 		}
 		else if (c == '+') {
 			//curAngle = std::fmod((plantAngle.top() + plant.angle), 180);
@@ -167,13 +170,13 @@ std::pair<std::vector<float>, std::vector<int>> PlantObject::drawTree()
 		else if (c == '-') {
 			//curAngle = std::fmod((plantAngle.top() - plant.angle), 180);
 			curAngle = plantAngle.top() - plant.angle;
-			if (curAngle < 0)
-				curAngle *= -1;
+			//if (curAngle < 0)
+				//curAngle *= -1;
 			//plantAngle.push(curAngle);
 		}
 		else if (c == 'F') {
-			coord = { (float)(cos(plantAngle.top() * (std::_Pi/180)) * step) + coordStack.top().x
-					, (float)(sin(plantAngle.top() * (std::_Pi / 180)) * step) + coordStack.top().y };
+			coord = { (float)(cos(plantAngle.top() * (std::_Pi/180))) * step + coordStack.top().x
+					, (float)(sin(plantAngle.top() * (std::_Pi / 180)))* step + coordStack.top().y };
 			plantCoord.push_back(coord);
 			//coordStack.push(coord);
 			std::cout << "x = " << plantCoord.back().x <<
@@ -181,8 +184,8 @@ std::pair<std::vector<float>, std::vector<int>> PlantObject::drawTree()
 				", angle = " << plantAngle.top() << std::endl;
 		}
 		else if (c == 'X') {
-			coord = { (float)(cos(plantAngle.top() * (std::_Pi / 180)) * step) + coordStack.top().x
-					, (float)(sin(plantAngle.top() * (std::_Pi / 180)) * step) + coordStack.top().y };
+			coord = { (float)(cos(plantAngle.top() * (std::_Pi / 180))) * step + coordStack.top().x
+					, (float)(sin(plantAngle.top() * (std::_Pi / 180))) * step + coordStack.top().y };
 			plantCoord.push_back(coord);
 			//coordStack.push(coord);
 			std::cout << "x = " << plantCoord.back().x <<
@@ -203,11 +206,11 @@ std::pair<std::vector<float>, std::vector<int>> PlantObject::drawTree()
 std::vector<float> PlantObject::plantVert(std::vector<coordPair> plantCoord)
 {
 	std::vector<float> vert;
-	float size = .007;
+	float size = .005;
 
-	srand(time(NULL));
-	float rnd = 1.0 * rand() / (RAND_MAX / 2) - 1;
-
+	//srand(time(NULL));
+	float rnd = rndFloat();
+	
 	for (auto& point : plantCoord) {
 		vert.push_back(point.x + size);
 		vert.push_back(point.y - size);
@@ -217,6 +220,18 @@ std::vector<float> PlantObject::plantVert(std::vector<coordPair> plantCoord)
 		vert.push_back(0.211);
 		vert.push_back(point.x - size);
 		vert.push_back(point.y - size);
+		vert.push_back(0);
+		vert.push_back(0.486);
+		vert.push_back(0.298);
+		vert.push_back(0.211);
+		vert.push_back(rnd + point.x + size);
+		vert.push_back(rnd + point.y + size);
+		vert.push_back(0);
+		vert.push_back(0.486);
+		vert.push_back(0.298);
+		vert.push_back(0.211);
+		vert.push_back(rnd + point.x - size);
+		vert.push_back(rnd + point.y + size);
 		vert.push_back(0);
 		vert.push_back(0.486);
 		vert.push_back(0.298);
@@ -243,4 +258,11 @@ std::vector<int> PlantObject::plantInd(int count)
 		}
 	}
 	return indicies;
+}
+
+float rndFloat() {
+	std::default_random_engine rndEngine;
+	rndEngine.seed(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
+	static auto gen = std::bind(std::uniform_real_distribution<>(0, .001), rndEngine);
+	return gen();
 }

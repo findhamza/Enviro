@@ -158,6 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="plantA.DAT" />
+    <None Include="plantD.DAT" />
+    <None Include="plantE.DAT" />
+    <None Include="plantF.DAT" />
     <None Include="shader.frag" />
     <None Include="shader.vert" />
   </ItemGroup>

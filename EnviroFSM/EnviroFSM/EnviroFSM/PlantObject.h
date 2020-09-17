@@ -56,6 +56,6 @@ class PlantObject
 		bool getTestState();
 		std::pair<std::vector<float>,std::vector<int>> drawTree();
 };
-
+float rndFloat();
 
 #endif // !PLANTOBJECT_H

@@ -127,7 +127,7 @@ void EnviroEngine::update()
     int *indices = plantInds.data(); //std::copy(plantVerts.begin(), plantVerts.end(), indices);
 
     indicesCount = plantInds.size();
-    jee += 600;
+    jee += 6000;
 
     glGenBuffers(1, &EBO);
 
@@ -139,9 +139,11 @@ void EnviroEngine::update()
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     //glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     glBufferData(GL_ARRAY_BUFFER, plantVerts.size() /*jee*/ , plantVerts.data(), GL_STATIC_DRAW);
+    //glBufferData(GL_ARRAY_BUFFER, /*plantVerts.size()*/ jee, plantVerts.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, plantInds.size() /*jee/6*/, plantInds.data(), GL_STATIC_DRAW);
+    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, /*plantInds.size()*/ jee/6, plantInds.data(), GL_STATIC_DRAW);
 
     // position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -171,6 +173,7 @@ void EnviroEngine::render()
     glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
     //glDrawArrays(GL_TRIANGLES, 0, 3);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    //glPointSize(3);
     glDrawElements(GL_TRIANGLES, indicesCount, GL_UNSIGNED_INT, 0);
     // glBindVertexArray(0); // no need to unbind it every time 
 

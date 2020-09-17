@@ -49,13 +49,22 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="plantA.DAT">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="shader.frag">
       <Filter>Source Files</Filter>
     </None>
     <None Include="shader.vert">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="plantA.DAT">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="plantF.DAT">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="plantD.DAT">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="plantE.DAT">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

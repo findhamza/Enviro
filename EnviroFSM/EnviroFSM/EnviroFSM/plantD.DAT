@@ -1,0 +1,5 @@
+n 7
+angle 20.0
+seed X
+X 1.0 F[+X]F[-X]+X
+F 1.0 FF

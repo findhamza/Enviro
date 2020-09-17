@@ -4,15 +4,95 @@ D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(105,19): warning C4244:
 D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(106,22): warning C4305: '+=': truncation from 'double' to 'float'
 D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(107,22): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
 D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(129,36): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(217,132): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(220,132): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
           with
           [
               _Rep=__int64
           ]
-D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(219,15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(224,132): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(222,15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(227,132): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
           with
           [
               _Rep=__int64
           ]
+  main.cpp
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\main.cpp(27,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\main.cpp(33,30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  PlantObject.cpp
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(110,129): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(151,21): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(198,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(209,19): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(218,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(219,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(220,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(224,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(225,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(226,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(230,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(231,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(232,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(236,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(237,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(238,23): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(265,129): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+D:\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\PlantObject.cpp(267,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   EnviroFSM.vcxproj -> D:\Enviro\EnviroFSM\EnviroFSM\x64\Debug\EnviroFSM.exe

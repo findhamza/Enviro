@@ -1,5 +1,4 @@
 n 5
-angle 22.5
-seed X
-X 1.0 F-[[X]+F]+F[+FX]-X
-F 1.0 FF
+angle 25.7
+seed F
+F 1.0 F[+F]F[-F]F
