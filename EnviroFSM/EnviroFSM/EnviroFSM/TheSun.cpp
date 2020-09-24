@@ -2,20 +2,19 @@
 
 TheSun::TheSun()
 {
-	focus = { 0.0, 0.7 };
+	focus = { 0.0, .2 };
 }
 
 void TheSun::generateRim()
 {
 	coordPair point;
-	float angleConst = (std::_Pi * 2) / (sizeof(rim) / sizeof(rim[0]));
-	float curAngle = 0;
+	float angleConst = (std::_Pi * 24) / (sizeof(rim) / sizeof(rim[0]));
+	float curAngle = std::_Pi/2;
 	
 	for (int i = 0; i < (sizeof(rim) / sizeof(rim[0])); i++)
 	{
-		point = { cos(curAngle) * radius + focus.x, sin(curAngle) * radius + focus.y };
+		point = { float(cos(curAngle) * radius + focus.x), float(sin(curAngle) * radius + focus.y) };
 		curAngle += angleConst;
-
 		rim[i] = point;
 	}
 }
@@ -46,7 +45,7 @@ void TheSun::generateSunIndices()
 {
 	int counter = 1;
 
-	for (int i = 0; i < (sizeof(rim) / sizeof(rim[0])); i++)
+	for (int i = 0; i < (sizeof(sunIndices) / sizeof(sunIndices[0])); i++)
 	{
 		if (i % 3 == 0)
 			sunIndices[i] = 0;
@@ -66,6 +65,15 @@ void TheSun::generateSunIndices()
 	sunIndices[6] = 0;
 	sunIndices[7] = 3;
 	sunIndices[8] = 4;*/
+}
+
+void TheSun::updateSun()
+{
+	focus.x += speedConst;
+	focus.y += speedConst;
+	generateRim();
+	generateSunVertices();
+	generateSunIndices();
 }
 
 std::vector<float> TheSun::getSunVertices()

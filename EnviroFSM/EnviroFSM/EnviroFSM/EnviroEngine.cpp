@@ -103,6 +103,7 @@ void EnviroEngine::update()
     plantA.drawTree();
     std::vector<float> plantVerts = plantA.getPlantVertices();
     std::vector<int> plantInds = plantA.getPlantIndices();
+    sun.updateSun();
     std::vector<float> sunVerts = sun.getSunVertices();
     std::vector<int> sunInds = sun.getSunIndices();
 
@@ -119,7 +120,7 @@ void EnviroEngine::update()
 
 
 
-    indicesCount = plantInds.size() + sunInds.size();
+    indicesCount = sunInds.size();
     /*
     xFloat = rFloat * cos(thetaFloat);
     yFloat = rFloat * sin(thetaFloat);
