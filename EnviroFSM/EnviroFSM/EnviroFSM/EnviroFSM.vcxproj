@@ -148,6 +148,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="PlantObject.cpp" />
+    <ClCompile Include="TheSun.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EnviroEngine.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Plant.h" />
     <ClInclude Include="PlantObject.h" />
     <ClInclude Include="syslib.h" />
+    <ClInclude Include="TheSun.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="plantA.DAT" />

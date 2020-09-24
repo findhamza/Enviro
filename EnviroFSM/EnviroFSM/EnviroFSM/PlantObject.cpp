@@ -135,7 +135,7 @@ std::string PlantObject::getTree()
 	return plant.structure;
 }
 
-std::pair<std::vector<float>, std::vector<int>> PlantObject::drawTree()
+void PlantObject::drawTree()
 {
 	std::vector<coordPair> plantCoord;
 	std::stack<coordPair> coordStack;
@@ -179,28 +179,36 @@ std::pair<std::vector<float>, std::vector<int>> PlantObject::drawTree()
 					, (float)(sin(plantAngle.top() * (std::_Pi / 180)))* step + coordStack.top().y };
 			plantCoord.push_back(coord);
 			//coordStack.push(coord);
-			std::cout << "x = " << plantCoord.back().x <<
-				", y = " << plantCoord.back().y <<
-				", angle = " << plantAngle.top() << std::endl;
+			//std::cout << "x = " << plantCoord.back().x <<
+				//", y = " << plantCoord.back().y <<
+				//", angle = " << plantAngle.top() << std::endl;
 		}
 		else if (c == 'X') {
 			coord = { (float)(cos(plantAngle.top() * (std::_Pi / 180))) * step + coordStack.top().x
 					, (float)(sin(plantAngle.top() * (std::_Pi / 180))) * step + coordStack.top().y };
 			plantCoord.push_back(coord);
 			//coordStack.push(coord);
-			std::cout << "x = " << plantCoord.back().x <<
-				", y = " << plantCoord.back().y <<
-				", angle = " << plantAngle.top() << std::endl;
+			//std::cout << "x = " << plantCoord.back().x <<
+				//", y = " << plantCoord.back().y <<
+				//", angle = " << plantAngle.top() << std::endl;
 		}
 	}
 
-	std::vector<float> plantVerts = plantVert(plantCoord);
-	std::vector<int> plantIndices = plantInd(plantVerts.size()/6);
+	plantVertices = plantVert(plantCoord);
+	plantIndices = plantInd(plantVertices.size()/6);
 	std::pair<std::vector<float>, std::vector<int>> drawDetails;
-	drawDetails.first = plantVerts;
+	drawDetails.first = plantVertices;
 	drawDetails.second = plantIndices;
+}
 
-	return drawDetails;
+std::vector<float> PlantObject::getPlantVertices()
+{
+	return plantVertices;
+}
+
+std::vector<int> PlantObject::getPlantIndices()
+{
+	return plantIndices;
 }
 
 std::vector<float> PlantObject::plantVert(std::vector<coordPair> plantCoord)

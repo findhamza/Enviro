@@ -36,11 +36,9 @@ class PlantObject
 		int growthPoint;
 	};
 
-	struct coordPair {
-		float x, y;
-	};
-
 	plantRules plant;
+	std::vector<float> plantVertices;
+	std::vector<int> plantIndices;
 
 	void generatePlant();
 	void getPlant(std::string);
@@ -54,7 +52,9 @@ class PlantObject
 		PlantObject();
 		void plantInput(bool wInput, bool sInput, int potency);
 		bool getTestState();
-		std::pair<std::vector<float>,std::vector<int>> drawTree();
+		void drawTree();
+		std::vector<float> getPlantVertices();
+		std::vector<int> getPlantIndices();
 };
 float rndFloat();
 

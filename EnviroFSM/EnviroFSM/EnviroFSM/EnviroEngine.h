@@ -5,6 +5,7 @@
 #include "syslib.h"
 #include "graphics.h"
 #include "PlantObject.h"
+#include "TheSun.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -27,6 +28,7 @@ class EnviroEngine
 	const char* fShader = fragShader.c_str();
 
 	PlantObject plantA; int jee = 0;
+	TheSun sun;
 
 	int vertexShader;
 	int success;

@@ -11,6 +11,7 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_SAMPLES, 16);
 
 
     // glfw window creation
@@ -72,9 +73,13 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
+    glEnable(GL_MULTISAMPLE);
+
     do {
         plantA.plantInput(randomBool(), randomBool(), 5);
     } while (plantA.getTestState());
+
+    sun.generateRim(); sun.generateSunVertices(); sun.generateSunIndices();
 
     return true;
 }
@@ -95,17 +100,34 @@ void EnviroEngine::update()
 // ------------------------------------------------------------------
 
     //plantA.plantInput(randomBool(), randomBool(), 5);
-    std::pair<std::vector<float>, std::vector<int>> drawPlant = plantA.drawTree();
-    std::vector<float> plantVerts = drawPlant.first;
-    std::vector<int> plantInds = drawPlant.second;
+    plantA.drawTree();
+    std::vector<float> plantVerts = plantA.getPlantVertices();
+    std::vector<int> plantInds = plantA.getPlantIndices();
+    std::vector<float> sunVerts = sun.getSunVertices();
+    std::vector<int> sunInds = sun.getSunIndices();
 
+
+    std::vector<float> vertices;
+    vertices.reserve(plantVerts.size() + sunVerts.size());
+    vertices.insert(vertices.end(), plantVerts.begin(), plantVerts.end());
+    vertices.insert(vertices.end(), sunVerts.begin(), sunVerts.end());
+
+    std::vector<int> indices;
+    indices.reserve(plantInds.size() + sunInds.size());
+    indices.insert(indices.end(), plantInds.begin(), plantInds.end());
+    indices.insert(indices.end(), sunInds.begin(), sunInds.end());
+
+
+
+    indicesCount = plantInds.size() + sunInds.size();
+    /*
     xFloat = rFloat * cos(thetaFloat);
     yFloat = rFloat * sin(thetaFloat);
     float xoFloat = rFloat * cos(thetaFloat+(std::_Pi*.25));
     float yoFloat = rFloat * sin(thetaFloat + (std::_Pi * .25));
     thetaFloat += .01;
     thetaFloat = fmod(thetaFloat, std::_Pi);
-
+    */
     //xFloat += .01;
     //xFloat = fmod(xFloat, 1);
     //yFloat += .01;
@@ -123,11 +145,8 @@ void EnviroEngine::update()
         1, 2, 3,    // second triangle
         4, 0, 2
     };*/
-    float *vertices = plantVerts.data(); //std::copy(plantVerts.begin(), plantVerts.end(), vertices);
-    int *indices = plantInds.data(); //std::copy(plantVerts.begin(), plantVerts.end(), indices);
-
-    indicesCount = plantInds.size();
-    jee += 6000;
+    //float *vertices = plantVerts.data(); //std::copy(plantVerts.begin(), plantVerts.end(), vertices);
+    //int *indices = plantInds.data(); //std::copy(plantVerts.begin(), plantVerts.end(), indices);
 
     glGenBuffers(1, &EBO);
 
@@ -138,11 +157,11 @@ void EnviroEngine::update()
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     //glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glBufferData(GL_ARRAY_BUFFER, plantVerts.size() /*jee*/ , plantVerts.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sunVerts.size() /*jee*/ , sunVerts.data(), GL_STATIC_DRAW);
     //glBufferData(GL_ARRAY_BUFFER, /*plantVerts.size()*/ jee, plantVerts.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, plantInds.size() /*jee/6*/, plantInds.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sunInds.size() /*jee/6*/, sunInds.data(), GL_STATIC_DRAW);
     //glBufferData(GL_ELEMENT_ARRAY_BUFFER, /*plantInds.size()*/ jee/6, plantInds.data(), GL_STATIC_DRAW);
 
     // position attribute

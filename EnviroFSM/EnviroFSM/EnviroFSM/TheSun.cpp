@@ -44,20 +44,40 @@ void TheSun::generateSunVertices()
 
 void TheSun::generateSunIndices()
 {
-	for (int i = 0; i < (sizeof(rim) / sizeof(rim[0]))/3; i++)
+	int counter = 1;
+
+	for (int i = 0; i < (sizeof(rim) / sizeof(rim[0])); i++)
 	{
-		sunIndices[i + 0] = (i * 3) + 1;
-		sunIndices[i + 1] = (i * 3) + 2;
-		sunIndices[i + 2] = 0;
-	}
+		if (i % 3 == 0)
+			sunIndices[i] = 0;
+		else if ((i - 1) % 3 == 0)
+			sunIndices[i] = counter++;
+		else
+			sunIndices[i] = counter;
+	}/*
+	sunIndices[0] = 0;
+	sunIndices[1] = 1;
+	sunIndices[2] = 2;
+
+	sunIndices[3] = 0;
+	sunIndices[4] = 2;
+	sunIndices[5] = 3;
+
+	sunIndices[6] = 0;
+	sunIndices[7] = 3;
+	sunIndices[8] = 4;*/
 }
 
-float* TheSun::getSunVertices()
+std::vector<float> TheSun::getSunVertices()
 {
-	return sunVertices;
+	std::vector<float> verts;
+	verts.assign(sunVertices, sunVertices + sizeof(sunVertices) / sizeof(sunVertices[0]));
+	return verts;
 }
 
-int* TheSun::getSunIndices()
+std::vector<int> TheSun::getSunIndices()
 {
-	return sunIndices;
+	std::vector<int> inds;
+	inds.assign(sunIndices, sunIndices + sizeof(sunIndices) / sizeof(sunIndices[0]));
+	return inds;
 }
