@@ -155,6 +155,7 @@
     <ClInclude Include="graphics.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="PlantObject.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="syslib.h" />
     <ClInclude Include="TheSun.h" />
   </ItemGroup>

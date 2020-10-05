@@ -4,6 +4,7 @@
 
 #include "syslib.h"
 #include "graphics.h"
+#include "Shader.h"
 #include "PlantObject.h"
 #include "TheSun.h"
 
@@ -22,6 +23,7 @@ class EnviroEngine
 	}
 
 	GLFWwindow* window;
+	Shader mainShader;
 	std::string vertShader = getShader("shader.vert");
 	std::string fragShader = getShader("shader.frag");
 	const char* vShader = vertShader.c_str();
