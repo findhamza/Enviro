@@ -2,6 +2,7 @@
 #ifndef THESUN_H
 
 #include "syslib.h"
+#include "graphics.h"
 
 class TheSun
 {

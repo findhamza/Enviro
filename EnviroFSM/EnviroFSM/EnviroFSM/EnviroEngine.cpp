@@ -49,6 +49,10 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
 
 	sun.generateRim(); sun.generateSunVertices(); sun.generateSunIndices();
 
+	std::vector<Vertex> plantVert = plantA.getPlantVertex();
+	std::vector<unsigned int> plantInds = plantA.getPlantUIndices();
+	plantObject = Mesh(plantVert,plantInds);
+
 	return true;
 }
 
@@ -89,33 +93,6 @@ void EnviroEngine::update()
 
 
 	indicesCount = plantInds.size();
-	/*
-	xFloat = rFloat * cos(thetaFloat);
-	yFloat = rFloat * sin(thetaFloat);
-	float xoFloat = rFloat * cos(thetaFloat+(std::_Pi*.25));
-	float yoFloat = rFloat * sin(thetaFloat + (std::_Pi * .25));
-	thetaFloat += .01;
-	thetaFloat = fmod(thetaFloat, std::_Pi);
-	*/
-	//xFloat += .01;
-	//xFloat = fmod(xFloat, 1);
-	//yFloat += .01;
-	//yFloat = fmod(yFloat, 1);
-	/*
-	float vertices[] = {
-		xFloat,  -yFloat, 0.0f,     xFloat,  -yFloat, -xFloat,//0.0f,  // top right       0
-		xoFloat, -yoFloat, 0.0f,    xoFloat, -yoFloat, -xFloat,//0.0f,  // bottom right  1
-		-xoFloat, yoFloat, 0.0f,    -xoFloat, yoFloat, xFloat,//0.0f,  // bottom left   2
-		-xFloat,  yFloat, 0.0f,     -xFloat,  yFloat, xFloat,//0.0f,  // top left        3
-		0.0f, 0.0f, 0.0f,           0.0f, 0.0f, 0.0f 
-	};
-	unsigned int indices[] = {  // note that we start from 0!
-		0, 1, 3,   // first triangle
-		1, 2, 3,    // second triangle
-		4, 0, 2
-	};*/
-	//float *vertices = plantVerts.data(); //std::copy(plantVerts.begin(), plantVerts.end(), vertices);
-	//int *indices = plantInds.data(); //std::copy(plantVerts.begin(), plantVerts.end(), indices);
 
 	glGenBuffers(1, &EBO);
 
@@ -145,7 +122,7 @@ void EnviroEngine::update()
 
 	// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-	glBindVertexArray(0);
+	glBindVertexArray(0);	
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();

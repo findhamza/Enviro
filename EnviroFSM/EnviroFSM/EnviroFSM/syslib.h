@@ -19,8 +19,4 @@
 #include <cmath>
 #include <stack>
 
-struct coordPair {
-	float x, y;
-};
-
 #endif

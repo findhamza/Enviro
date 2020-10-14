@@ -5,6 +5,7 @@
 #include "syslib.h"
 #include "graphics.h"
 #include "Shader.h"
+#include "Mesh.h"
 #include "PlantObject.h"
 #include "TheSun.h"
 
@@ -29,8 +30,9 @@ class EnviroEngine
 	const char* vShader = vertShader.c_str();
 	const char* fShader = fragShader.c_str();
 
-	PlantObject plantA; int jee = 0;
+	PlantObject plantA;
 	TheSun sun;
+	Mesh plantObject, sunObject;
 
 	int vertexShader;
 	int success;
@@ -39,7 +41,6 @@ class EnviroEngine
 	int shaderProgram;
 	int indicesCount;
 	unsigned int VBO, VAO, EBO;
-	float xFloat = 0, yFloat = 0, rFloat = 0.5, thetaFloat = 0;
 
 
 public:

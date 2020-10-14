@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="EnviroEngine.h" />
     <ClInclude Include="graphics.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="PlantObject.h" />
     <ClInclude Include="Shader.h" />

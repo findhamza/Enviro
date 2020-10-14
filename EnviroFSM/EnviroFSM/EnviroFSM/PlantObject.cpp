@@ -201,9 +201,40 @@ void PlantObject::drawTree()
 	drawDetails.second = plantIndices;
 }
 
+std::vector<Vertex> PlantObject::getPlantVertex()
+{
+	std::vector<Vertex> plantVertex;
+	Vertex vertex;
+	glm::vec3 pos;
+	glm::vec3 color;
+
+	for(int i = 0; i < plantVertices.size()/6; i++) {
+		pos = glm::vec3(plantVertices[i * 6], plantVertices[(i * 6) + 1], plantVertices[(i * 6) + 2]);
+		color = glm::vec3(plantVertices[(i * 6) + 3], plantVertices[(i * 3) + 4], plantVertices[(i * 3) + 5]);
+		vertex.Position = pos;
+		vertex.Color = color;
+		plantVertex.push_back(vertex);
+	}
+
+	return plantVertex;
+}
+
 std::vector<float> PlantObject::getPlantVertices()
 {
 	return plantVertices;
+}
+
+std::vector<unsigned int> PlantObject::getPlantUIndices()
+{
+	std::vector<unsigned int> uInds;
+	int ui;
+	for (int i = 0; i < plantIndices.size(); i++)
+	{
+		ui = plantIndices[i];
+		uInds.push_back(ui);
+	}
+
+	return uInds;
 }
 
 std::vector<int> PlantObject::getPlantIndices()

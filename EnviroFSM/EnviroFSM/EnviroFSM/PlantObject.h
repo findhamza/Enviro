@@ -4,6 +4,7 @@
 
 
 #include "syslib.h"
+#include "graphics.h"
 #include "Plant.h"
 
 class PlantObject
@@ -53,7 +54,9 @@ class PlantObject
 		void plantInput(bool wInput, bool sInput, int potency);
 		bool getTestState();
 		void drawTree();
+		std::vector<Vertex> getPlantVertex();
 		std::vector<float> getPlantVertices();
+		std::vector<unsigned int> getPlantUIndices();
 		std::vector<int> getPlantIndices();
 };
 float rndFloat();
