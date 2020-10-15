@@ -22,6 +22,7 @@ class EnviroEngine
 	EnviroEngine() {
 
 	}
+	void setupObjects();
 
 	GLFWwindow* window;
 	Shader mainShader;
@@ -51,6 +52,7 @@ public:
 	}
 
 	bool init(const char* title, int xpos, int ypos, int height, int width, bool fullscreen);
+
 
 	bool running();
 

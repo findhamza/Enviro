@@ -69,8 +69,11 @@ void TheSun::generateSunIndices()
 
 void TheSun::updateSun()
 {
-	focus.x += speedConst;
-	focus.y += speedConst;
+	//focus.x += speedConst;
+	//focus.y += speedConst;
+	angularSpeed = fmod(angularSpeed+speedConst,std::_Pi);
+	focus.x = worldFocus.x + cos(angularSpeed) * worldRadius;
+	focus.y = worldFocus.y + sin(angularSpeed) * worldRadius;
 	generateRim();
 	generateSunVertices();
 	generateSunIndices();
@@ -83,9 +86,42 @@ std::vector<float> TheSun::getSunVertices()
 	return verts;
 }
 
+std::vector<Vertex> TheSun::getSunVertex()
+{
+	std::vector<Vertex> sunVertex;
+	std::vector<float> sunVertices = getSunVertices();
+	Vertex vertex;
+	glm::vec3 pos;
+	glm::vec3 color;
+
+	for (int i = 0; i <  sunVertices.size()/ 6; i++) {
+		pos = glm::vec3(sunVertices[i * 6], sunVertices[(i * 6) + 1], sunVertices[(i * 6) + 2]);
+		color = glm::vec3(sunVertices[(i * 6) + 3], sunVertices[(i * 3) + 4], sunVertices[(i * 3) + 5]);
+		vertex.Position = pos;
+		vertex.Color = color;
+		sunVertex.push_back(vertex);
+	}
+
+	return sunVertex;
+}
+
 std::vector<int> TheSun::getSunIndices()
 {
 	std::vector<int> inds;
 	inds.assign(sunIndices, sunIndices + sizeof(sunIndices) / sizeof(sunIndices[0]));
 	return inds;
+}
+
+std::vector<unsigned int> TheSun::getSunUIndices()
+{
+	std::vector<unsigned int> uInds;
+	std::vector<int> sunIndices = getSunIndices();
+	int ui;
+	for (int i = 0; i < sunIndices.size(); i++)
+	{
+		ui = sunIndices[i];
+		uInds.push_back(ui);
+	}
+
+	return uInds;
 }
