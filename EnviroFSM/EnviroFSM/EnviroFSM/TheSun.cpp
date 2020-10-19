@@ -71,7 +71,7 @@ void TheSun::updateSun()
 {
 	//focus.x += speedConst;
 	//focus.y += speedConst;
-	angularSpeed = fmod(angularSpeed+speedConst,std::_Pi);
+	angularSpeed = fmod(angularSpeed+speedConst,std::_Pi*2);
 	focus.x = worldFocus.x + cos(angularSpeed) * worldRadius;
 	focus.y = worldFocus.y + sin(angularSpeed) * worldRadius;
 	generateRim();
@@ -96,7 +96,7 @@ std::vector<Vertex> TheSun::getSunVertex()
 
 	for (int i = 0; i <  sunVertices.size()/ 6; i++) {
 		pos = glm::vec3(sunVertices[i * 6], sunVertices[(i * 6) + 1], sunVertices[(i * 6) + 2]);
-		color = glm::vec3(sunVertices[(i * 6) + 3], sunVertices[(i * 3) + 4], sunVertices[(i * 3) + 5]);
+		color = glm::vec3(0.984, 0.894, 0.317);
 		vertex.Position = pos;
 		vertex.Color = color;
 		sunVertex.push_back(vertex);

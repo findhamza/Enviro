@@ -63,8 +63,8 @@ private:
         glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW); //looks really beautiful but creates reflections
-        //glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size()-1, indices.data(), GL_STATIC_DRAW); //similar to old code (-1 to stop draw glitch.)
+        //glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW); //looks really beautiful but creates reflections
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size(), indices.data(), GL_STATIC_DRAW); //similar to old code (-1 to stop draw glitch.)
 
         // set the vertex attribute pointers
         // vertex Positions

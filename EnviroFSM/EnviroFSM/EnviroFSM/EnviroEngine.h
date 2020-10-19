@@ -10,7 +10,6 @@
 #include "TheSun.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
 std::string getShader(std::string);
 float randomFloat();
 bool randomBool();
@@ -26,6 +25,7 @@ class EnviroEngine
 
 	GLFWwindow* window;
 	Shader mainShader;
+	Shader sunShader;
 	std::string vertShader = getShader("shader.vert");
 	std::string fragShader = getShader("shader.frag");
 	const char* vShader = vertShader.c_str();
@@ -43,6 +43,8 @@ class EnviroEngine
 	int indicesCount;
 	unsigned int VBO, VAO, EBO;
 
+	bool _fullscreen = false;
+	void processInput(GLFWwindow* window);
 
 public:
 	static EnviroEngine* getInstance() {

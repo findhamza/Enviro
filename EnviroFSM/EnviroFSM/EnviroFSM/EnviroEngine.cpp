@@ -39,6 +39,7 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
 // ------------------------------------
 	//Shader Loader
 	mainShader = Shader("shader.vert", "shader.frag");
+	sunShader = Shader("sun.vert", "sun.frag");
 
 	//Antialiasing
 	glEnable(GL_MULTISAMPLE);
@@ -96,7 +97,7 @@ void EnviroEngine::render()
 	// draw our first triangle
 	//glUseProgram(shaderProgram);
 	//mainShader.use();
-	sunObject.Draw(mainShader);
+	sunObject.Draw(sunShader);
 	plantObject.Draw(mainShader);
 
 }
@@ -111,10 +112,22 @@ void EnviroEngine::quit()
 	glfwTerminate();
 }
 
-void processInput(GLFWwindow* window)
+void EnviroEngine::processInput(GLFWwindow* window)
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
+	if (glfwGetKey(window, GLFW_KEY_RIGHT_ALT) == GLFW_PRESS &&
+		glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS)
+	{
+		_fullscreen ^= true;
+		if (_fullscreen)
+		{
+			const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+			glfwSetWindowMonitor(window, _fullscreen ? glfwGetPrimaryMonitor() : NULL, 0, 0, mode->width, mode->height, GLFW_DONT_CARE);
+		}
+		else
+			glfwSetWindowMonitor(window, NULL, 100, 100, 640, 480, GLFW_DONT_CARE);
+	}
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)

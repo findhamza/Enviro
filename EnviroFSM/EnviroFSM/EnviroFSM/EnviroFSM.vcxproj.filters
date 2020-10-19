@@ -79,5 +79,11 @@
     <None Include="plantE.DAT">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="sun.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="sun.vert">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
