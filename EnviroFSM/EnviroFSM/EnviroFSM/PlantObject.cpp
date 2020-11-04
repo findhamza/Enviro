@@ -196,14 +196,13 @@ void PlantObject::drawTree()
 
 	plantVertices = plantVert(plantCoord);
 	plantIndices = plantInd(plantVertices.size()/6);
-	std::pair<std::vector<float>, std::vector<int>> drawDetails;
-	drawDetails.first = plantVertices;
-	drawDetails.second = plantIndices;
+	//std::pair<std::vector<float>, std::vector<int>> drawDetails;
+	//drawDetails.first = plantVertices;
+	//drawDetails.second = plantIndices;
 }
 
 std::vector<Vertex> PlantObject::getPlantVertex()
 {
-	std::vector<Vertex> plantVertex;
 	Vertex vertex;
 	glm::vec3 pos;
 	glm::vec3 color;
@@ -226,7 +225,6 @@ std::vector<float> PlantObject::getPlantVertices()
 
 std::vector<unsigned int> PlantObject::getPlantUIndices()
 {
-	std::vector<unsigned int> uInds;
 	int ui;
 	for (int i = 0; i < plantIndices.size(); i++)
 	{
@@ -297,6 +295,13 @@ std::vector<int> PlantObject::plantInd(int count)
 		}
 	}
 	return indicies;
+}
+
+std::vector<unsigned int> PlantObject::updateTreeInds()
+{
+	genericCount += 3*20;
+	genericCount %= uInds.size();
+	return std::vector<unsigned int>(uInds.begin(), uInds.begin() + genericCount);
 }
 
 float rndFloat() {

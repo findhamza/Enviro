@@ -58,12 +58,12 @@ void EnviroEngine::setupObjects()
 	sun.generateRim(); sun.generateSunVertices(); sun.generateSunIndices();
 	std::vector<Vertex> sunVert = sun.getSunVertex();
 	std::vector<unsigned int> sunInds = sun.getSunUIndices();
-	sunObject = Mesh(sunVert, sunInds);
+	sunObject = Mesh(sunVert, sunInds, 1);
 
 	plantA.drawTree();
 	std::vector<Vertex> plantVert = plantA.getPlantVertex();
 	std::vector<unsigned int> plantInds = plantA.getPlantUIndices();
-	plantObject = Mesh(plantVert, plantInds);
+	plantObject = Mesh(plantVert, plantInds, 2);
 }
 
 bool EnviroEngine::running()
@@ -80,10 +80,16 @@ void EnviroEngine::update()
 {
 	//this is where we would update world enviornments
 	//this area was previously used ot setup draw calls to opengl, now its handled by Mesh.h
-	sun.updateSun();
+	//sun.updateSun();
+	std::thread sunThread_0(&TheSun::updateSun, &sun);
 	std::vector<Vertex> sunVert = sun.getSunVertex();
 	std::vector<unsigned int> sunInds = sun.getSunUIndices();
-	sunObject = Mesh(sunVert, sunInds);
+	sunObject.Update(sunVert, sunInds);
+
+	//plantObject.UpdateInds(plantA.updateTreeInds());
+	std::thread plantThread_0(&Mesh::UpdateInds, &plantObject, plantA.updateTreeInds());
+	sunThread_0.join();
+	plantThread_0.join();
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();

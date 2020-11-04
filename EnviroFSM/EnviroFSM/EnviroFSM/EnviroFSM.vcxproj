@@ -148,6 +148,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="PlantObject.cpp" />
+    <ClCompile Include="TheCloud.cpp" />
     <ClCompile Include="TheSun.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -158,9 +159,11 @@
     <ClInclude Include="PlantObject.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="syslib.h" />
+    <ClInclude Include="TheCloud.h" />
     <ClInclude Include="TheSun.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cloudA.DAT" />
     <None Include="plantA.DAT" />
     <None Include="plantD.DAT" />
     <None Include="plantE.DAT" />

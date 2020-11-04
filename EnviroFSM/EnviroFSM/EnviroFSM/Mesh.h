@@ -13,6 +13,7 @@ public:
     vector<Vertex>       vertices;
     vector<unsigned int> indices;
     unsigned int VAO;
+    unsigned int id;
 
     // constructor
     Mesh()
@@ -21,13 +22,30 @@ public:
         VBO = 0;
         EBO = 0;
     }
-    Mesh(vector<Vertex> vertices, vector<unsigned int> indices)
+    Mesh(vector<Vertex> vertices, vector<unsigned int> indices, unsigned int id)
+    {
+        this->vertices = vertices;
+        this->indices = indices;
+        this->id = id;
+
+        // now that we have all the required data, set the vertex buffers and its attribute pointers.
+        setupMesh();
+    }
+
+    void Update(vector<Vertex> vertices, vector<unsigned int> indices)
     {
         this->vertices = vertices;
         this->indices = indices;
 
         // now that we have all the required data, set the vertex buffers and its attribute pointers.
         setupMesh();
+    }
+
+    void UpdateInds(vector<unsigned int> indices)
+    {
+        this->indices = indices;
+
+        rebindBufferIndices();
     }
 
     // render the mesh
@@ -50,9 +68,9 @@ private:
     void setupMesh()
     {
         // create buffers/arrays
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
-        glGenBuffers(1, &EBO);
+        glGenVertexArrays(id, &VAO);
+        glGenBuffers(id, &VBO);
+        glGenBuffers(id, &EBO);
 
         glBindVertexArray(VAO);
         // load data into vertex buffers
@@ -74,6 +92,13 @@ private:
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Color));
         glBindVertexArray(0);
+    }
+
+    void rebindBufferIndices()
+    {
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+        //glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW); //looks really beautiful but creates reflections
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size(), indices.data(), GL_STATIC_DRAW); //similar to old code (-1 to stop draw glitch.)
     }
 };
 #endif
