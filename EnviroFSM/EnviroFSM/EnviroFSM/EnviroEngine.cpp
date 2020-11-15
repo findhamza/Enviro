@@ -16,7 +16,10 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
 
 	// glfw window creation
 	// --------------------
-	window = glfwCreateWindow(width, height, title, NULL, NULL);
+	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	window = glfwCreateWindow(fullscreen ? mode->width : width, 
+								fullscreen ? mode->height : height,
+								title, fullscreen ? glfwGetPrimaryMonitor() : NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -40,6 +43,7 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
 	//Shader Loader
 	mainShader = Shader("shader.vert", "shader.frag");
 	sunShader = Shader("sun.vert", "sun.frag");
+	cloudShader = Shader("cloud.vert", "cloud.frag");
 
 	//Antialiasing
 	glEnable(GL_MULTISAMPLE);
@@ -55,15 +59,29 @@ void EnviroEngine::setupObjects()
 		plantA.plantInput(randomBool(), randomBool(), 5);
 	} while (plantA.getTestState());
 
-	sun.generateRim(); sun.generateSunVertices(); sun.generateSunIndices();
+	std::thread sunThread_0(&TheSun::generateRim, &sun);
+	std::thread cloudThread_0(&TheCloud::generateCloud, &clouds);
+	std::thread plantThread_0(&PlantObject::drawTree, &plantA);
+
+	sunThread_0.join();
+	cloudThread_0.join();
+	plantThread_0.join();
+
+	/*sun.generateRim();*/ sun.generateSunVertices(); sun.generateSunIndices();
 	std::vector<Vertex> sunVert = sun.getSunVertex();
 	std::vector<unsigned int> sunInds = sun.getSunUIndices();
 	sunObject = Mesh(sunVert, sunInds, 1);
 
-	plantA.drawTree();
+	//clouds.generateCloud();
+	std::vector<Vertex> cloudVert = clouds.getCloudVertex();
+	std::vector<unsigned int> cloudInds = clouds.getCloudIndices();
+	cloudObject = Mesh(cloudVert, cloudInds, 2);
+
+	//plantA.drawTree();
 	std::vector<Vertex> plantVert = plantA.getPlantVertex();
 	std::vector<unsigned int> plantInds = plantA.getPlantUIndices();
-	plantObject = Mesh(plantVert, plantInds, 2);
+	plantObject = Mesh(plantVert, plantInds, 3);
+
 }
 
 bool EnviroEngine::running()
@@ -104,6 +122,7 @@ void EnviroEngine::render()
 	//glUseProgram(shaderProgram);
 	//mainShader.use();
 	sunObject.Draw(sunShader);
+	cloudObject.Draw(cloudShader);
 	plantObject.Draw(mainShader);
 
 }

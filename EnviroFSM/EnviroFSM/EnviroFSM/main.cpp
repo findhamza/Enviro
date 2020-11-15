@@ -20,7 +20,7 @@ int main(int argc, const char* argv[]) {
 
 	int frameStart, frameTime;
 
-	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 480, 640, false))
+	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 480, 640, true/*false*/))
 	{
 		while (EnviroEngine::getInstance()->running())
 		{

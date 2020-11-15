@@ -56,6 +56,8 @@ public:
 
         // draw mesh
         glBindVertexArray(VAO);
+        //glPointSize(2);
+        //glDrawElements(GL_LINES, indices.size(), GL_UNSIGNED_INT, 0);
         glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
     }

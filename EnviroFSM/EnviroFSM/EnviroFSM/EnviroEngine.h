@@ -8,6 +8,7 @@
 #include "Mesh.h"
 #include "PlantObject.h"
 #include "TheSun.h"
+#include "TheCloud.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 std::string getShader(std::string);
@@ -26,6 +27,7 @@ class EnviroEngine
 	GLFWwindow* window;
 	Shader mainShader;
 	Shader sunShader;
+	Shader cloudShader;
 	std::string vertShader = getShader("shader.vert");
 	std::string fragShader = getShader("shader.frag");
 	const char* vShader = vertShader.c_str();
@@ -33,7 +35,8 @@ class EnviroEngine
 
 	PlantObject plantA;
 	TheSun sun;
-	Mesh plantObject, sunObject;
+	TheCloud clouds;
+	Mesh plantObject, sunObject, cloudObject;
 
 	int vertexShader;
 	int success;

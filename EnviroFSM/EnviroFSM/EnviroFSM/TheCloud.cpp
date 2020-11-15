@@ -8,7 +8,7 @@ TheCloud::TheCloud()
 void TheCloud::generateCloud()
 {
 	getCloud("cloudA.DAT");
-
+	cloudCount = cloud.n;
 	cloud.structure = cloud.seed;
 	std::string newStructure;
 
@@ -17,6 +17,7 @@ void TheCloud::generateCloud()
 		iterate();
 		std::cout << getCloud() << std::endl;
 	}
+	drawCloud();
 }
 
 void TheCloud::getCloud(std::string cloudFile)
@@ -90,17 +91,34 @@ std::string TheCloud::getCloud()
 	return cloud.structure;
 }
 
-void TheCloud::generateRim()
+void TheCloud::generateVU()
 {
 	coordPair point;
-	float angleConst = (std::_Pi * 24) / (sizeof(rim) / sizeof(rim[0]));
+	glm::vec3 cloud_vertex;
+	Vertex tempVert;
+	float angleConst = (std::_Pi * 24) / 2048;
 	float curAngle = std::_Pi / 2;
+	unsigned int counter = 1;
 
-	for (int i = 0; i < (sizeof(rim) / sizeof(rim[0])); i++)
+	int detail = 2048 / 6;
+
+	for (int f = 0; f < focus.size(); f++)
 	{
-		point = { float(cos(curAngle) * radius + focus.x), float(sin(curAngle) * radius + focus.y) };
-		curAngle += angleConst;
-		rim[i] = point;
+		for (int r = 0; r < detail; r++)
+		{
+			point = { float(cos(curAngle) * radius + focus[f].x), float(sin(curAngle) * radius + focus[f].y) };
+			curAngle += angleConst;
+			tempVert.Position = glm::vec3(point.x, point.y, 0);
+			tempVert.Color = glm::vec3(0.8, 0.8, 0.8);
+			cloudVertex.push_back(tempVert);
+
+			if (r % 3 == 0)
+				cloudIndices.push_back((f*detail)/3);
+			else if ((r - 1) % 3 == 0)
+				cloudIndices.push_back(counter++);
+			else
+				cloudIndices.push_back(counter);
+		}
 	}
 }
 
@@ -108,15 +126,15 @@ void TheCloud::drawCloud()
 {
 	std::vector<coordPair> cloudCoord;
 	std::stack<coordPair> coordStack;
-	coordPair coord = { 0.0,-1 };
+	coordPair coord = { 0.0,0.5 };
 	cloudCoord.push_back(coord);
 	coordStack.push(coord);
 
 	std::stack<double> cloudAngle;
-	cloudAngle.push(90);
+	cloudAngle.push(270);
 	double curAngle = cloudAngle.top();
 
-	float step = .5;
+	float step = radius;// .3;
 	float stepDown = .8;
 
 	std::string str = cloud.structure;
@@ -148,4 +166,17 @@ void TheCloud::drawCloud()
 			cloudCoord.push_back(coord);
 		}
 	}
+
+	focus.swap(cloudCoord);
+	generateVU();
+}
+
+std::vector<Vertex> TheCloud::getCloudVertex()
+{
+	return cloudVertex;
+}
+
+std::vector<unsigned int> TheCloud::getCloudIndices()
+{
+	return cloudIndices;
 }

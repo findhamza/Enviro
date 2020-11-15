@@ -31,10 +31,9 @@ class TheCloud
 	int cloudCount;
 	cloudRules cloud;
 	std::vector<coordPair> focus;
-	std::vector<coordPair> rim[2048];
-	float radius = 0.1;
-	std::vector<float> sunVertices[4098]; //size = ( size(rim) * 6 ) + 6
-	std::vector<unsigned int> sunIndices[683];  //size = size(sunVertices) / 6
+	float radius = 0.2;
+	std::vector<Vertex> cloudVertex; //size = ( size(rim) * 6 ) + 6
+	std::vector<unsigned int> cloudIndices;  //size = size(sunVertices) / 6
 
 	coordPair worldFocus = { 0.0, -1.0 };
 	float worldRadius = 1.2;
@@ -45,16 +44,13 @@ class TheCloud
 	void iterate();
 	std::string findRule(char piece);
 	std::string getCloud();
+	void generateVU();
+	void drawCloud();
 
 public:
 	TheCloud();
-	void generateCloud();
-	void generateRim();
-	void drawCloud();
-	void generateCloudVertices();
-	void generateCloudIndices();
 	void updateCloud();
-	std::vector<float> getCloudVertices();
+	void generateCloud();
 	std::vector<Vertex> getCloudVertex();
 	std::vector<unsigned int> getCloudIndices();
 

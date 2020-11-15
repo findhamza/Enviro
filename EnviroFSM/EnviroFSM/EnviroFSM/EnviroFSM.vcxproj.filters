@@ -94,5 +94,11 @@
     <None Include="cloudA.DAT">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="cloud.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="cloud.vert">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
