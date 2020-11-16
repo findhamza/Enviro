@@ -1,0 +1,14 @@
+﻿  main.cpp
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\Shader.h(59,40): warning C4101: 'e': unreferenced local variable
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\Mesh.h(61,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\TheSun.h(11,20): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\TheSun.h(16,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\TheSun.h(17,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\TheSun.h(18,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\TheCloud.h(34,20): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\TheCloud.h(39,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\TheCloud.h(40,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\TheCloud.h(41,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\main.cpp(27,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\main.cpp(33,30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  EnviroFSM.vcxproj -> C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\x64\Debug\EnviroFSM.exe
