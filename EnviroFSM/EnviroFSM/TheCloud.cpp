@@ -7,7 +7,7 @@ TheCloud::TheCloud()
 
 void TheCloud::generateCloud()
 {
-	getCloud("cloudA.DAT");
+	getCloud("CloudA.DAT");
 	cloudCount = cloud.n;
 	cloud.structure = cloud.seed;
 	std::string newStructure;
@@ -83,7 +83,23 @@ std::string TheCloud::findRule(char piece)
 	rndEngine.seed(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
 	static auto gen = std::bind(std::uniform_int_distribution<>(0, 1), rndEngine);
 
-	return it->nodePair;
+	//return it->nodePair;
+
+	bool happens = gen() <= it->chance;
+
+	while (it != cloud.rules.end() && !happens) {
+		it = std::find(it, cloud.rules.end(), cloudPiece);
+		happens = gen() <= it->chance;
+		it = it.operator++();
+	}
+
+	if (it != cloud.rules.end() && happens) {
+		std::string rule = it->nodePair;
+		return rule;
+	}
+	else
+		return std::string(1, piece);
+
 }
 
 std::string TheCloud::getCloud()

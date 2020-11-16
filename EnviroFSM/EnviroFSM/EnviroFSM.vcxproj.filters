@@ -100,5 +100,8 @@
     <None Include="cloud.vert">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="cloudB.DAT">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

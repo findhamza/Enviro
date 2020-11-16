@@ -166,6 +166,7 @@
     <None Include="cloud.frag" />
     <None Include="cloud.vert" />
     <None Include="cloudA.DAT" />
+    <None Include="cloudB.DAT" />
     <None Include="plantA.DAT" />
     <None Include="plantD.DAT" />
     <None Include="plantE.DAT" />
