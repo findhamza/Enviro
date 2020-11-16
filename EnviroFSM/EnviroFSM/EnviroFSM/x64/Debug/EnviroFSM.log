@@ -1,23 +1,19 @@
-﻿  EnviroEngine.cpp
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\Shader.h(59,40): warning C4101: 'e': unreferenced local variable
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\Mesh.h(61,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+﻿  TheSun.cpp
 C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.h(11,20): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.h(16,25): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.h(17,24): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.h(18,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheCloud.h(34,20): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheCloud.h(39,25): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheCloud.h(40,24): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheCloud.h(41,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(176,129): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
-          with
-          [
-              _Rep=__int64
-          ]
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(178,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\EnviroEngine.cpp(183,129): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
-          with
-          [
-              _Rep=__int64
-          ]
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(5,20): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(11,69): warning C4305: 'initializing': truncation from 'long double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(12,29): warning C4305: 'initializing': truncation from 'long double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(29,24): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(30,24): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(31,24): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(38,41): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(39,41): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(40,41): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(74,21): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(132,10): warning C4244: 'initializing': conversion from 'long double' to 'float', possible loss of data
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(133,10): warning C4244: 'initializing': conversion from 'long double' to 'float', possible loss of data
+C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\EnviroFSM\TheSun.cpp(134,10): warning C4244: 'initializing': conversion from 'long double' to 'float', possible loss of data
   EnviroFSM.vcxproj -> C:\Users\Hamza\Desktop\GitHub\Enviro\EnviroFSM\EnviroFSM\x64\Debug\EnviroFSM.exe

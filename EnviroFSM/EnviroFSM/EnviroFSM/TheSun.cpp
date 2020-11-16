@@ -125,3 +125,14 @@ std::vector<unsigned int> TheSun::getSunUIndices()
 
 	return uInds;
 }
+
+glm::vec4 TheSun::getSkyColor()
+{
+	glm::vec4 color;
+	float r = 0.2505 - std::sin((focus.y + 1) * (std::_Pi / 2.4)) * -0.2395;
+	float g = 0.3895 - std::sin((focus.y + 1) * (std::_Pi / 2.4)) * -0.3625;
+	float b = 0.5425 - std::sin((focus.y + 1) * (std::_Pi / 2.4)) * -0.4255;
+	float a = 1.0f;
+	color = glm::vec4(r, g, b, a);
+	return color;
+}

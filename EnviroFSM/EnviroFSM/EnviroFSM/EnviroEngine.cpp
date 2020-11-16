@@ -116,7 +116,8 @@ void EnviroEngine::update()
 void EnviroEngine::render()
 {
 	//glClearColor(0.2f, 0.3f, 0.3f, 1.0f); //werid teal color
-	glClearColor(0.490f, 0.752f, 0.968f, 1.0f); //malibu blue
+	glm::vec4 sky = sun.getSkyColor();
+	glClearColor(sky.x,sky.y,sky.z,sky.a); //malibu blue
 	glClear(GL_COLOR_BUFFER_BIT);
 	// draw our first triangle
 	//glUseProgram(shaderProgram);
