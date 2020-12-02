@@ -171,6 +171,8 @@
     <None Include="plantD.DAT" />
     <None Include="plantE.DAT" />
     <None Include="plantF.DAT" />
+    <None Include="rain.frag" />
+    <None Include="rain.vert" />
     <None Include="shader.frag" />
     <None Include="shader.vert" />
     <None Include="sun.frag" />

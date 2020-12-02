@@ -25,9 +25,8 @@ class EnviroEngine
 	void setupObjects();
 
 	GLFWwindow* window;
-	Shader mainShader;
-	Shader sunShader;
-	Shader cloudShader;
+	Shader mainShader, sunShader, cloudShader,
+		rainShader;
 	std::string vertShader = getShader("shader.vert");
 	std::string fragShader = getShader("shader.frag");
 	const char* vShader = vertShader.c_str();
@@ -37,6 +36,7 @@ class EnviroEngine
 	TheSun sun;
 	TheCloud clouds;
 	Mesh plantObject, sunObject, cloudObject;
+	Mesh::ParticleGenerator rain;
 
 	int vertexShader;
 	int success;
@@ -62,7 +62,7 @@ public:
 	bool running();
 
 	void handleEvents();
-	void update();
+	void update(float);
 	void render();
 	void clean();
 

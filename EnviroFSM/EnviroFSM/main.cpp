@@ -20,14 +20,14 @@ int main(int argc, const char* argv[]) {
 
 	int frameStart, frameTime;
 
-	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 480, 640, true/*false*/))
+	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 480, 640, false/*false*/))
 	{
 		while (EnviroEngine::getInstance()->running())
 		{
 			frameStart = glfwGetTime();
 
 			EnviroEngine::getInstance()->handleEvents();
-			EnviroEngine::getInstance()->update();
+			EnviroEngine::getInstance()->update((float) (glfwGetTime() - frameStart));
 			EnviroEngine::getInstance()->render();
 
 			frameTime = glfwGetTime() - frameStart;

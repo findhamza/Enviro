@@ -103,5 +103,11 @@
     <None Include="cloudB.DAT">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="rain.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="rain.vert">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -44,6 +44,7 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
 	mainShader = Shader("shader.vert", "shader.frag");
 	sunShader = Shader("sun.vert", "sun.frag");
 	cloudShader = Shader("cloud.vert", "cloud.frag");
+	rainShader = Shader("rain.vert", "rain.frag");
 
 	//Antialiasing
 	glEnable(GL_MULTISAMPLE);
@@ -82,6 +83,7 @@ void EnviroEngine::setupObjects()
 	std::vector<unsigned int> plantInds = plantA.getPlantUIndices();
 	plantObject = Mesh(plantVert, plantInds, 3);
 
+	rain = Mesh::ParticleGenerator(rainShader, 50000);
 }
 
 bool EnviroEngine::running()
@@ -94,7 +96,7 @@ void EnviroEngine::handleEvents()
 	processInput(window);
 }
 
-void EnviroEngine::update()
+void EnviroEngine::update(float dt)
 {
 	//this is where we would update world enviornments
 	//this area was previously used ot setup draw calls to opengl, now its handled by Mesh.h
@@ -108,6 +110,8 @@ void EnviroEngine::update()
 	std::thread plantThread_0(&Mesh::UpdateInds, &plantObject, plantA.updateTreeInds());
 	sunThread_0.join();
 	plantThread_0.join();
+
+	rain.Update(1, 1, glm::vec2(0.0f, 0.0f));
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();
@@ -125,7 +129,7 @@ void EnviroEngine::render()
 	sunObject.Draw(sunShader);
 	cloudObject.Draw(cloudShader);
 	plantObject.Draw(mainShader);
-
+	rain.Draw();
 }
 
 void EnviroEngine::clean()

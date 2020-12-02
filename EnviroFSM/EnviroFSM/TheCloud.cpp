@@ -7,7 +7,7 @@ TheCloud::TheCloud()
 
 void TheCloud::generateCloud()
 {
-	getCloud("CloudA.DAT");
+	getCloud("CloudB.DAT");
 	cloudCount = cloud.n;
 	cloud.structure = cloud.seed;
 	std::string newStructure;
