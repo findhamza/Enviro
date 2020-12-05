@@ -53,7 +53,6 @@ public:
     {
         //start shader
         shader.use();
-
         // draw mesh
         glBindVertexArray(VAO);
         //glPointSize(2);
@@ -130,13 +129,13 @@ public:
             // set up mesh and attribute properties
             unsigned int VBO;
             float particle_quad[] = {
-                0.0f, 0.01f, 0.0f, 0.01f,
-                0.01f, 0.0f, 0.01f, 0.0f,
+                0.0f, 0.001f, 0.0f, 0.001f,
+                0.001f, 0.0f, 0.001f, 0.0f,
                 0.0f, 0.0f, 0.0f, 0.0f,
 
-                0.0f, 0.01f, 0.0f, 0.01f,
-                0.01f, 0.01f, 0.01f, 0.01f,
-                0.01f, 0.0f, 0.01f, 0.0f
+                0.0f, 0.001f, 0.0f, 0.001f,
+                0.001f, 0.001f, 0.01f, 0.001f,
+                0.001f, 0.0f, 0.001f, 0.0f
             };
             glGenVertexArrays(1, &this->VAO);
             glGenBuffers(1, &VBO);
@@ -177,12 +176,13 @@ public:
 
         void respawnParticle(Particle& particle, glm::vec2 offset)
         {
-            float random = ((rand() % 100) - 50) / 10.0f;
+            float random = ((rand() % 101) + (-50)) / 100.0f;
+            float randVelocity = ((float(rand()) / float(RAND_MAX)) * (1.0f - 0.4f)) + 0.4f;
             float rColor = 0.5f + ((rand() % 100) / 100.0f);
-            particle.Position = random + offset;
+            particle.Position = glm::vec2((random*0.72f)-0.05f, 0.45f);// random + offset;
             particle.Color = glm::vec4(rColor, rColor, rColor, 1.0f);
-            particle.Life = 50.0f;
-            particle.Velocity = glm::vec2(0.0f, 0.0f);
+            particle.Life = 200.0f;
+            particle.Velocity = glm::vec2(randVelocity*random*-0.02, 0.1f*(randVelocity));
         }
     };
 

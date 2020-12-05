@@ -21,9 +21,6 @@
     <ClCompile Include="Plant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlantObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EnviroEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -34,6 +31,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TheCloud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlantObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -107,6 +107,9 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="rain.vert">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="plantH.DAT">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

@@ -59,17 +59,17 @@ void TheCloud::getCloud(std::string cloudFile)
 
 void TheCloud::iterate()
 {
-	std::string newTree;
+	std::string newCloud;
 
 	for (int i = 0; i < cloud.structure.size(); i++) {
 		char piece = cloud.structure[i];
 		if (!ispunct(piece))
-			newTree += findRule(piece);
+			newCloud += findRule(piece);
 		else
-			newTree += piece;
+			newCloud += piece;
 	}
 
-	cloud.structure = newTree;
+	cloud.structure = newCloud;
 }
 std::string TheCloud::findRule(char piece)
 {
@@ -129,13 +129,21 @@ void TheCloud::generateVU()
 			cloudVertex.push_back(tempVert);
 
 			if (r % 3 == 0)
-				cloudIndices.push_back((f*detail)/3);
+				fullCloudIndices.push_back((f*detail)/3);
 			else if ((r - 1) % 3 == 0)
-				cloudIndices.push_back(counter++);
+				fullCloudIndices.push_back(counter++);
 			else
-				cloudIndices.push_back(counter);
+				fullCloudIndices.push_back(counter);
 		}
 	}
+}
+
+std::vector<unsigned int> TheCloud::updateCloud()
+{
+	cloudIndCount += 3 * ((int)2048/64);
+	cloudIndCount %= fullCloudIndices.size();
+	cloudIndices = std::vector<unsigned int>(fullCloudIndices.begin(), fullCloudIndices.begin() + cloudIndCount);
+	return cloudIndices;
 }
 
 void TheCloud::drawCloud()
@@ -194,5 +202,5 @@ std::vector<Vertex> TheCloud::getCloudVertex()
 
 std::vector<unsigned int> TheCloud::getCloudIndices()
 {
-	return cloudIndices;
+	return fullCloudIndices;
 }

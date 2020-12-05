@@ -34,6 +34,8 @@ class TheCloud
 	float radius = 0.2;
 	std::vector<Vertex> cloudVertex; //size = ( size(rim) * 6 ) + 6
 	std::vector<unsigned int> cloudIndices;  //size = size(sunVertices) / 6
+	std::vector<unsigned int> fullCloudIndices;
+	int cloudIndCount=0;
 
 	coordPair worldFocus = { 0.0, -1.0 };
 	float worldRadius = 1.2;
@@ -49,7 +51,7 @@ class TheCloud
 
 public:
 	TheCloud();
-	void updateCloud();
+	std::vector<unsigned int>  updateCloud();
 	void generateCloud();
 	std::vector<Vertex> getCloudVertex();
 	std::vector<unsigned int> getCloudIndices();

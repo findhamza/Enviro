@@ -32,7 +32,7 @@ bool PlantObject::getTestState()
 
 void PlantObject::generatePlant()
 {
-	getPlant("plantF.DAT");
+	getPlant("plantH.DAT");
 
 	plant.structure = plant.seed;
 	std::string newStructure;
@@ -110,9 +110,8 @@ std::string PlantObject::findRule(char piece)
 	rndEngine.seed(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
 	static auto gen = std::bind(std::uniform_int_distribution<>(0, 1), rndEngine);
 
-	return it->nodePair;
+	//return it->nodePair;
 
-	/*
 	bool happens = gen() <= it->chance;
 
 	while (it != plant.rules.end() && !happens) {
@@ -127,7 +126,6 @@ std::string PlantObject::findRule(char piece)
 	}
 	else
 		return std::string(1, piece);
-	*/
 }
 
 std::string PlantObject::getTree() 
@@ -147,8 +145,9 @@ void PlantObject::drawTree()
 	plantAngle.push(90);
 	double curAngle = plantAngle.top();
 
-	float step = .5;
+	float step = .38;
 	float stepDown = .8;
+	float angleStep = 1.04;
 
 	std::string str = plant.structure;
 	for (char& c : str) {
@@ -156,11 +155,13 @@ void PlantObject::drawTree()
 			coordStack.push(coord);
 			plantAngle.push(curAngle);
 			step *= stepDown;
+			plant.angle *= angleStep;
 		}
 		else if (c == ']') {
 			coordStack.pop();
 			plantAngle.pop();
 			step /= stepDown;
+			plant.angle /= angleStep;
 		}
 		else if (c == '+') {
 			//curAngle = std::fmod((plantAngle.top() + plant.angle), 180);

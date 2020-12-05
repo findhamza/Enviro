@@ -83,7 +83,7 @@ void EnviroEngine::setupObjects()
 	std::vector<unsigned int> plantInds = plantA.getPlantUIndices();
 	plantObject = Mesh(plantVert, plantInds, 3);
 
-	rain = Mesh::ParticleGenerator(rainShader, 50000);
+	rain = Mesh::ParticleGenerator(rainShader, 9999);
 }
 
 bool EnviroEngine::running()
@@ -108,10 +108,14 @@ void EnviroEngine::update(float dt)
 
 	//plantObject.UpdateInds(plantA.updateTreeInds());
 	std::thread plantThread_0(&Mesh::UpdateInds, &plantObject, plantA.updateTreeInds());
+
+	//std::vector<unsigned int> cloudInds = clouds.updateCloud();
+	//cloudObject.UpdateInds(cloudInds);
+	
 	sunThread_0.join();
 	plantThread_0.join();
 
-	rain.Update(1, 1, glm::vec2(0.0f, 0.0f));
+	rain.Update(0.5f, 7, glm::vec2(0.0f, 0.0f));
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();
@@ -127,9 +131,9 @@ void EnviroEngine::render()
 	//glUseProgram(shaderProgram);
 	//mainShader.use();
 	sunObject.Draw(sunShader);
+	rain.Draw();
 	cloudObject.Draw(cloudShader);
 	plantObject.Draw(mainShader);
-	rain.Draw();
 }
 
 void EnviroEngine::clean()
