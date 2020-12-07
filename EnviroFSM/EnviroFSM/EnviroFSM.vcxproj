@@ -146,16 +146,17 @@
     <ClCompile Include="..\Libraries\GLAD\src\glad.c" />
     <ClCompile Include="EnviroEngine.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Plant.cpp" />
     <ClCompile Include="PlantObject.cpp" />
     <ClCompile Include="TheCloud.cpp" />
     <ClCompile Include="TheSun.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CloudFSM.h" />
     <ClInclude Include="EnviroEngine.h" />
     <ClInclude Include="graphics.h" />
+    <ClInclude Include="ManagerFSM.h" />
     <ClInclude Include="Mesh.h" />
-    <ClInclude Include="Plant.h" />
+    <ClInclude Include="PlantFSM.h" />
     <ClInclude Include="PlantObject.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="syslib.h" />

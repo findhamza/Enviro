@@ -2,34 +2,8 @@
 
 PlantObject::PlantObject()
 {
-	plantCurrent_State = seed;
-	plantOld_State = plantCurrent_State;
 	generatePlant();
 }
-
-void PlantObject::plantInput(bool wInput, bool sInput, int potency)
-{
-	plantState_fun = plantState[plantCurrent_State];
-	struct plantInputParam pInput = plantState_fun(wInput, sInput);
-	
-	plantOld_State = plantCurrent_State;
-	plantCurrent_State = plantLookupTransition(plantCurrent_State, pInput);
-
-	if (plantOld_State == grow)
-		plant.growthPoint += (int)(plant.structure.size() * .01);
-	else if(plantOld_State == wilt)
-		plant.growthPoint -= (int)(plant.structure.size() * .01);
-
-	//std::cout << plant.growthPoint << "\n" << plant.structure.substr(0, plant.growthPoint) << std::endl;
-}
-
-bool PlantObject::getTestState()
-{
-	if (plantOld_State == die)
-		return false;
-	return true;
-}
-
 void PlantObject::generatePlant()
 {
 	getPlant("plantH.DAT");
@@ -298,10 +272,17 @@ std::vector<int> PlantObject::plantInd(int count)
 	return indicies;
 }
 
-std::vector<unsigned int> PlantObject::updateTreeInds()
+std::vector<unsigned int> PlantObject::updateTreeInds(updateFlag uFlags)
 {
-	genericCount += 3*20;
-	genericCount %= uInds.size();
+	if (uFlags.plant.grow) {
+		genericCount += 3 * 20;
+		genericCount %= uInds.size();
+	}
+	else if(uFlags.plant.wilt) {
+		genericCount -= 3 * 20;
+		if (genericCount < 0)
+			genericCount = 3;
+	}
 	return std::vector<unsigned int>(uInds.begin(), uInds.begin() + genericCount);
 }
 

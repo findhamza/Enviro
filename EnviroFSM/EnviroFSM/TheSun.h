@@ -29,7 +29,7 @@ public:
 	std::vector<unsigned int> getSunUIndices();
 
 	glm::vec4 getSkyColor();
-
+	double getSunPower();
 };
 
 #endif // !THESUN_H

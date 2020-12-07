@@ -5,15 +5,9 @@
 
 #include "syslib.h"
 #include "graphics.h"
-#include "Plant.h"
 
 class PlantObject
 {
-	enum plantState_codes plantCurrent_State;
-	enum plantState_codes plantOld_State;
-	enum plantWater_codes plant_water;
-	enum plantSun_codes plant_sun;
-	struct plantInputParam(*plantState_fun)(bool, bool);
 
 	struct rulePairs {
 		std::string node;
@@ -56,14 +50,12 @@ class PlantObject
 
 	public:
 		PlantObject();
-		void plantInput(bool wInput, bool sInput, int potency);
-		bool getTestState();
 		void drawTree();
 		std::vector<Vertex> getPlantVertex();
 		std::vector<float> getPlantVertices();
 		std::vector<unsigned int> getPlantUIndices();
 		std::vector<int> getPlantIndices();
-		std::vector<unsigned int> updateTreeInds();
+		std::vector<unsigned int> updateTreeInds(updateFlag uFlags);
 };
 float rndFloat();
 

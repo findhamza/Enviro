@@ -136,3 +136,11 @@ glm::vec4 TheSun::getSkyColor()
 	color = glm::vec4(r, g, b, a);
 	return color;
 }
+
+double TheSun::getSunPower()
+{
+	if (focus.y < 0)
+		return (double)focus.y * (-1);
+	else
+		return 0;
+}

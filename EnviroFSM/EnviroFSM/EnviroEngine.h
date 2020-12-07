@@ -38,6 +38,9 @@ class EnviroEngine
 	Mesh plantObject, sunObject, cloudObject;
 	Mesh::ParticleGenerator rain;
 
+	double rainDensity = 1;
+	double rainFactor = 1.009;
+
 	int vertexShader;
 	int success;
 	char infoLog[512];
@@ -62,9 +65,11 @@ public:
 	bool running();
 
 	void handleEvents();
-	void update(float);
-	void render();
+	void update(float, updateFlag);
+	void render(updateFlag);
 	void clean();
+
+	double getSunPowerLevel();
 
 	void quit();
 };

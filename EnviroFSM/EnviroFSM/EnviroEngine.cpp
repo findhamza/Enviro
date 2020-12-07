@@ -11,7 +11,7 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_SAMPLES, 16);
+	glfwWindowHint(GLFW_SAMPLES, 2);
 
 
 	// glfw window creation
@@ -56,10 +56,6 @@ bool EnviroEngine::init(const char* title, int xpos, int ypos, int height, int w
 
 void EnviroEngine::setupObjects()
 {
-	do {
-		plantA.plantInput(randomBool(), randomBool(), 5);
-	} while (plantA.getTestState());
-
 	std::thread sunThread_0(&TheSun::generateRim, &sun);
 	std::thread cloudThread_0(&TheCloud::generateCloud, &clouds);
 	std::thread plantThread_0(&PlantObject::drawTree, &plantA);
@@ -96,7 +92,7 @@ void EnviroEngine::handleEvents()
 	processInput(window);
 }
 
-void EnviroEngine::update(float dt)
+void EnviroEngine::update(float dt, updateFlag uFlag)
 {
 	//this is where we would update world enviornments
 	//this area was previously used ot setup draw calls to opengl, now its handled by Mesh.h
@@ -104,10 +100,11 @@ void EnviroEngine::update(float dt)
 	std::thread sunThread_0(&TheSun::updateSun, &sun);
 	std::vector<Vertex> sunVert = sun.getSunVertex();
 	std::vector<unsigned int> sunInds = sun.getSunUIndices();
+	
 	sunObject.Update(sunVert, sunInds);
 
 	//plantObject.UpdateInds(plantA.updateTreeInds());
-	std::thread plantThread_0(&Mesh::UpdateInds, &plantObject, plantA.updateTreeInds());
+	std::thread plantThread_0(&Mesh::UpdateInds, &plantObject, plantA.updateTreeInds(uFlag));
 
 	//std::vector<unsigned int> cloudInds = clouds.updateCloud();
 	//cloudObject.UpdateInds(cloudInds);
@@ -115,13 +112,21 @@ void EnviroEngine::update(float dt)
 	sunThread_0.join();
 	plantThread_0.join();
 
-	rain.Update(0.5f, 7, glm::vec2(0.0f, 0.0f));
+	
+	if (uFlag.cloud.rain == true) {
+		if (rainDensity < .5)
+			rainDensity = .5;
+		rainDensity *= rainFactor;
+	}
+	else
+		rainDensity /= rainFactor;
+	rain.Update(0.5f, rainDensity, glm::vec2(0.0f, 0.0f));
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();
 }
 
-void EnviroEngine::render()
+void EnviroEngine::render(updateFlag uFlags)
 {
 	//glClearColor(0.2f, 0.3f, 0.3f, 1.0f); //werid teal color
 	glm::vec4 sky = sun.getSkyColor();
@@ -139,6 +144,11 @@ void EnviroEngine::render()
 void EnviroEngine::clean()
 {
 	quit();
+}
+
+double EnviroEngine::getSunPowerLevel()
+{
+	return sun.getSunPower();
 }
 
 void EnviroEngine::quit()
