@@ -22,7 +22,7 @@ int main(int argc, const char* argv[]) {
 
 	ManagerFSM manager;
 
-	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 480, 640, false/*false*/))
+	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 480, 640, true/*false*/))
 	{
 		while (EnviroEngine::getInstance()->running())
 		{
