@@ -20,4 +20,19 @@
 #include <stack>
 #include <thread>
 
+struct plant {
+	bool grow = false;
+	bool wilt = false;
+};
+
+struct cloud {
+	bool grow = false;
+	bool rain = false;
+};
+
+struct updateFlag {
+	struct plant plant;
+	struct cloud cloud;
+};
+
 #endif

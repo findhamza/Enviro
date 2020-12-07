@@ -3,7 +3,7 @@
 
 #include "syslib.h"
 #include "EnviroEngine.h"
-#include "PlantObject.h"
+#include "ManagerFSM.h"
 
 const int FPS = 60;
 const int DELAY_TIME = 1000 / FPS; //originally it was 1000.0f
@@ -20,6 +20,8 @@ int main(int argc, const char* argv[]) {
 
 	int frameStart, frameTime;
 
+	ManagerFSM manager;
+
 	if (EnviroEngine::getInstance()->init("EnviroFSM", 100, 100, 480, 640, false/*false*/))
 	{
 		while (EnviroEngine::getInstance()->running())
@@ -27,8 +29,12 @@ int main(int argc, const char* argv[]) {
 			frameStart = glfwGetTime();
 
 			EnviroEngine::getInstance()->handleEvents();
-			EnviroEngine::getInstance()->update((float) (glfwGetTime() - frameStart));
-			EnviroEngine::getInstance()->render();
+			
+			double sPower = EnviroEngine::getInstance()->getSunPowerLevel();
+			updateFlag uFlags = manager.updateFSM(sPower);
+
+			EnviroEngine::getInstance()->update((float) (glfwGetTime() - frameStart), uFlags);
+			EnviroEngine::getInstance()->render(uFlags);
 
 			frameTime = glfwGetTime() - frameStart;
 			if (frameTime < DELAY_TIME)
